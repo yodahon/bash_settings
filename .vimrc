@@ -72,6 +72,9 @@ nnoremap <silent> <F2> :YRShow<CR>
 nnoremap <silent> <F8> :TlistToggle<CR> 
 nnoremap <silent> <F9> :OpenTerminal<CR>
 let g:CS_key = 1
+if has("gui_running")
+nnoremap <silent> <C-s>   <ESC>:w<CR>
+endif
 nnoremap <silent> <C-f>s   <ESC>:w<CR>
 
 "for MRU plugin
