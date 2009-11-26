@@ -27,12 +27,12 @@ end
 def make_symlink user_dir, target
     dest_link = "%s/%s"% [user_dir,target]
     rename_file(dest_link)
-
-    unless File.exists?(dest_link)
-      puts "[make]  #{dest_link}"
-      File.symlink(File.expand_path(target), dest_link)
+    goal = dest_link
+    unless File.exists?(goal)
+      puts "[make]  #{goal}"
+      File.symlink(File.expand_path(target), goal)
     else
-      puts "[exists] #{dest_link}"
+      puts "[exists] #{goal}"
     end 
 end
 
@@ -58,9 +58,10 @@ end
 
 Dir.chdir(File.dirname __FILE__) do 
   targets = Dir.glob(".*") + Dir.glob("*")
-  rejects = %w(.. . .svn .bashrc) << File.split(__FILE__)[1]
-  targets.reject!{|i| rejects.include? i}
+  targets -= %w(.. . .svn .bashrc .git README) << File.split(__FILE__)[1]
 
+  puts "This script try link for \n\t#{targets.join("\n\t")}\nPress any key."
+  gets
   targets.each do |target|
     make_symlink user_dir,target unless windows?
     make_mklink user_dir, target if windows?
