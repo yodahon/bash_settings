@@ -2,8 +2,8 @@
 let s:tags_dir = ""
 
 function! s:make_ctags()
-    let tags_cmd = "ctags -R"
-    execute("!" . tags_cmd)
+    let tags_cmd = "ctags -R "
+    execute("!" . tags_cmd . s:tags_dir)
     if !has("gui_running")
         echo tags_cmd
     endif
