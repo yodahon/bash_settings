@@ -61,6 +61,7 @@ Dir.chdir(File.dirname __FILE__) do
   targets -= %w(.. . .svn .bashrc .git README) << File.split(__FILE__)[1]
 
   puts "This script try link for \n\t#{targets.join("\n\t")}\nPress any key."
+
   gets
   targets.each do |target|
     make_symlink user_dir,target unless windows?

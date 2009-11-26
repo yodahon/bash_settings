@@ -6,17 +6,17 @@ make_link.rb
 .bashrc for bashrc
   - ls alias
 
-.vimrc, .vim for vim
-  - various plugin and settings
-
-.gitconfig for git
-  - add some alias
-
 .ctags for ctags
   - add javascript pattern
   - add xul to HTML format
+
+.gitconfig for git
+  - add some alias
 
 .screenrc for screen daemon
   - status bar setting
   - session changing key binding
   - grow up scroll buffer
+
+.vimrc, .vim for vim
+  - various plugin and settings
