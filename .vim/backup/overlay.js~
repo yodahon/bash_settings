@@ -1,0 +1,49 @@
+
+// Define Components shortcut
+  if (typeof Cc == "undefined")
+    var Cc = Components.classes;
+  if (typeof Ci == "undefined")
+    var Ci = Components.interfaces;
+  if (typeof Cr == "undefined")
+    var Cr = Components.results;
+  if (typeof Cu == "undefined")
+    var Cu = Components.utils;
+
+
+let EXPORTED_SYMBOLS = ["AutoToggleController"];
+
+let AutoToggleController = {
+
+  //*************************************************************************//
+  // Shortcuts - import from modules
+  S : null,
+  Sizzle : null,
+
+  onToggleMenu : function(){
+    let els = this.S("#toolbar-menubar", document);
+    for each(let el in els){
+      el.collapsed = !el.collapsed;
+    }
+  },
+
+  onToolbarMenu : function(){
+    let ;
+    alert("call me");
+  },
+  onShowToolbarMenu : function(){
+  },
+
+
+  //*************************************************************************//
+  // Initialization & Destruction
+  startUp: function(){
+  },
+  shutDown: function(){
+  }
+}
+
+Cu.import("resource://autotoggle/modules/sizzle.fox.js", AutoToggleController);
+
+
+window.addEventListener("load", function(e) { AutoToggleController.startUp(e) }, false);
+window.addEventListener("unload", function(e) { AutoToggleController.shutDown(e) }, false);

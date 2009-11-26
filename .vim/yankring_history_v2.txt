@@ -1,0 +1,100 @@
+[alias]    status = st,V
+,V
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA+6+SjDOm+FROn/4zK7JJFq/FtQHC/YnMeP+Spxrxd/30fhkgEvE1NisTZ60X4ooRkRAX963KZZwnmYvFwp6KPWmtbnas2si1tPTmsOGIhFrWecuk8GGjnI3SvrKlRQrPqCUFr3SNyH4e4HFsbeOQsF8QDVDkfbZSseaVDw5tJmNqwiW6T9DuJ05v2QKQMvw8q1fzrp1Ry9o5WANSdqBlLFW3bCdl/B2MWDZPxFqZWELU4AzyUbKymWXC4rE0/glKsPtJETakLPNfW04MYQNwIb08fVDW8q02z3EJvoOyAu1CaXzB00fdZJC7kbk1lCS3VLjVT7jh6y1UfIklNVEt0Q== neocoin@neou,v
+ppa:chromium-daily/ppa,v
+install chromium for linux,v
+Where I am?,v
+,,v
+",v
+S,v
+ ,v
+Sizzle,v
+let EXPORTED_SYMBOLS = ["Sizzle", "S"];,V
+PersonaController,v
+Document Object Model Events,v
+startUp,v
+window.addEventListener("load", function(e) { PersonaController.startUp(e) }, false);window.addEventListener("unload", function(e) { PersonaController.shutDown(e) }, false);,V
+window.addEventListener("load", function(e) { PersonaController.startUp(e) }, false);,V
+  startUp: function(){  },V
+  //*************************************************************************//,V
+type="checkbox",v
+" ============================================================================" Netrw Directory Listing                                        (netrw v135)"   /home/neocoin/Works/workspace/personas"   Sorted by      name"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$"   Hiding:        \(^\|\s\s\)\zs\.\S\+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec" ============================================================================content/defaults/locale/modules/skin/chrome.jarchrome.manifestcscope.filescscope.outinstall.rdftags,V
+            <menuitem id="at-menu-menubar"               label="&at.menu.menubar;" tooltiptext="&at.menu.menubar.tooltip;"              oncommand="AutoToggleController.onToolbarMenu()" />                          <menuitem id="at-menu-navbar" type="checkbox"              label="&at.menu.navbar;" tooltiptext="&at.menu.navbar.tooltip;"              oncommand="AutoToggleController.onToolbarMenu()" />            <menuitem id="at-menu-personalbar" type="checkbox"              label="&at.menu.personalbar;" tooltiptext="&at.menu.personalbar.tooltip;"              oncommand="AutoToggleController.onToolbarMenu()" />            <menuseparator />,v
+Preference,v
+AutoToggle,v
+iwreference,v
+P,v
+w,v
+o,v
+h,v
+ Preference,v
+<!ENTITY at.menu.preference 	  "Preference"><!ENTITY at.menu.preference.tooltip 	  "Show AutoToggle Preference">,V
+<!ENTITY at.menu.preference.tooltip 	  "Show AutoToggle Preference">,V
+" ============================================================================" Netrw Directory Listing                                        (netrw v135)"   /home/neocoin/Works/workspace/AutoToggle/src"   Sorted by      name"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$"   Hiding:        \(^\|\s\s\)\zs\.\S\+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec" ============================================================================chrome/components/defaults/plugins/chrome.manifestcscope.filescscope.outinstall.rdftags,V
+<menuitem id="at-menu-menubar" -->,v
+<menuitem id="at-menu-personalbar" type="checkbox"-->,v
+<menuitem id="at-menu-navbar" type="checkbox"-->,v
+  elseif  match(["html","xml", "xhtml", "htm"],&filetype) >= 0,V
+  elseif file_name =~ '\.html$' || file_name =~ '\.htm$' || file_name =~ '\.xml$' || file_name =~ '\.xhtml$' ,V
+"html",v
+&at.menu.navbar;,v
+match(&filetype, 'html') >= 0 ,v
+c,v
+e,v
+echo match(["html","xml", "xhtml", "htm"],"html"),V
+file_name =~ '\.html$' || file_name =~ '\.htm$' || file_name =~ '\.xml$' || file_name =~ '\.xhtml$' ,v
+',v
+~,v
+=,v
+m,v
+a,v
+n,v
+_,v
+l,v
+i,v
+f,v
+t,v
+| &filetype == ",v
+== 'xml' |,v
+file_name =~ '\.htm$' || file_name =~ '\.xml$' || file_name =~ '\.xhtml$' ,v
+file_name =~ '\.htm$' || file_name =~ '\.xml$' || file_name =~ '\.xhtml$' ,v
+" ============================================================================" Netrw Directory Listing                                        (netrw v135)"   /home/neocoin/.bash_settings/.vim/plugin"   Sorted by      name"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$"   Hiding:        \(^\|\s\s\)\zs\.\S\+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec" ============================================================================autocomplpop.vimcolor_sample_pack.vimcomments.vimcscope_helper.vimctags_helper.vimetc_helper.vimfuf.vimmatchit.vim*open_terminal.vimrails.vim*sudo.vimtaglist.vim*tagsyankring.vim,V
+<,v
+" ============================================================================" Netrw Directory Listing                                        (netrw v135)"   /home/neocoin/Works/workspace/AutoToggle/src/chrome/content"   Sorted by      name"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$"   Hiding:        \(^\|\s\s\)\zs\.\S\+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec" ============================================================================lib/asf.htmlnamespace.jsoverlay.jsoverlay.xul,V
+<xml>,v
+                      ,V
+              label="&at.menu.navbar;" tooltiptext="&at.menu.navbar.tooltip;"              oncommand="AutoToggleController.onToolbarMenu()" />,v
+navbar,v
+onMenu,v
+onToolbarMenu,v
+            <menuitem id="at-menu-navbar" type="checkbox"              label="&at.menu.navbar;" tooltiptext="&at.menu.navbar.tooltip;"              oncommand="AutoToggleController.onMenu()" />,V
+preference,v
+menu,v
+            <menuitem id="at-menu-menu" type="checkbox"              label="&at.menu.navbar;" tooltiptext="&at.menu.navbar;"              oncommand="AutoToggleController.onMenu()" />,V
+              ,V
+            <menuseparator />,V
+            <menuitem id="at-preference"               label="&at.menu.preference;" tooltiptext="&at.menu.preference.tooltip;"              oncommand="AutoToggleController.showPreference()" />              ,V
+<C-,>,v
+<C-.>,v
+let g:yankring_replace_n_pkey = "<C-,>",V
+nnoremap <silent> <C-.> <ESC>:e .<CR>,V
+FufRenewCache<CR>,v
+>,v
+r,v
+-,v
+C,v
+  nnoremap <silent> <C-f><C-r> :FufRenewCache<CR>let g:yankring_replace_n_pkey = "<C-,>",V
+nnoremap <silent> <F2> :YRShow<CR>    ,V
+&at..ireference.tooltip;,v
+              label="&at.menu.navbar;" tooltiptext="&at..ireference.tooltip;",V
+p,v
+              label="&at.menu.navbar;" tooltiptext="&at.menu.preference.tooltip;",V
+Menu,v
+            <menuitem id="at-preference"               label="&at.menu.preference;" tooltiptext="&at.menu.preference.tooltip;"              oncommand="AutoToggleController.onMenu()" />,V
+toolbar,v
+			<menupopup>				<menuitem id="qtb-menuCheck" type="checkbox"					label="&qtb-menuCheck-label;" tooltiptext="&qtb-menuCheck-tooltiptext;"					oncommand="quicktoolbars.cocherMenu(event, 'Menu'); event.stopPropagation();" persist="checked" />									<menuitem id="qtb-navigationCheck" type="checkbox" 					label="&qtb-navigationCheck-label;" tooltiptext="&qtb-navigationCheck-tooltiptext;"					oncommand="quicktoolbars.cocherMenu(event, 'Navigation'); event.stopPropagation();" persist="checked" />									<menuitem id="qtb-bookmarkCheck" type="checkbox"					label="&qtb-bookmarkCheck-label;" tooltiptext="&qtb-bookmarkCheck-tooltiptext;"					oncommand="quicktoolbars.cocherMenu(event, 'Bookmark'); event.stopPropagation();" persist="checked"  checked="checked" />									<menuitem id="qtb-statutCheck" type="checkbox"					label="&qtb-statutCheck-label;"	tooltiptext="&qtb-statutCheck-tooltiptext;"					oncommand="quicktoolbars.cocherMenu(event, 'Statut'); event.stopPropagation();" persist="checked" />									<menuitem id="qtb-toutesCheck" type="checkbox"					label="&qtb-toutesCheck-label;" tooltiptext="&qtb-toutesCheck-tooltiptext;"					oncommand="quicktoolbars.cocherMenu(event, 'Toutes'); event.stopPropagation();" persist="checked" />									<menuseparator />									<menuitem id="qtb-bouton-option"					label="&qtb-bouton-option-label;" tooltiptext="&qtb-bouton-option-tooltiptext;"					oncommand="quicktoolbars.afficherOptions(); event.stopPropagation();" />			</menupopup>,v
+map      <silent> <F4> <ESC>:w<CR>,V
+ :FufTaggedFile<CR>,v
+<ESC>:w<CR>,v
+  nnoremap <silent> <C-f>f     :FufTaggedFile<CR>,V
+                                           "for MRU plugin,V

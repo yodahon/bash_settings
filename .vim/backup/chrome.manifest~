@@ -1,0 +1,9 @@
+content   autotoggle  ./chrome/content/
+locale    autotoggle  en-US        chrome/locale/en-US/
+skin      autotoggle  classic/1.0  chrome/skin/
+resource  autotoggle  ./chrome/
+
+overlay chrome://browser/content/browser.xul chrome://autotoggle/content/overlay.xul
+#style chrome://browser/content/browser.xul chrome://autotoggle/skin/core.css
+
+#override

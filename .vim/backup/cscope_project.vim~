@@ -1,0 +1,93 @@
+"for cscope
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Using 'CTRL-spacebar' then a search type makes the vim window
+" split horizontally, with search result displayed in
+" the new window.
+
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Hitting CTRL-space *twice* before the search type does a vertical
+" split instead of a horizontal one
+
+"nmap <C-Space><C-Space>s
+        "\:vert scs find s <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-Space><C-Space>g
+        "\:vert scs find g <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-Space><C-Space>c
+        "\:vert scs find :lsc <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-Space><C-Space>t
+        "\:vert scs find t <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-Space><C-Space>e
+        "\:vert scs find e <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-Space><C-Space>i
+        "\:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+"nmap <C-Space><C-Space>d
+        "\:vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
+
+let s:csout_dir = ""
+
+function! s:csout_path()
+    return s:csout_dir . "/cscope.out"
+endfunction
+
+function! s:make_cscope_out()
+    let csout_cmd = "!find ./ -type f -not -path \"*/.*\" -not -name \"tags\" -not -name \"cscope.out\" | xargs cscope -b "
+    execute(csout_cmd)
+    unlet csout_cmd
+endfunction    
+
+function! s:add_cscope_out()
+    cs kill 0
+    execute("cs add " . s:csout_path() . " " . s:csout_dir )
+    cs show
+    set cspc=3
+endfunction
+
+function! s:init_cscope()
+    let s:csout_dir = getcwd() 
+    call s:make_cscope_out()
+    call s:add_cscope_out()
+endfunction
+
+function! s:set_cscope()
+    if len(findfile("cscope.out",".")) > 0
+        let s:csout_dir = getcwd() 
+        call s:add_cscope_out()
+    endif
+endfunction
+
+function! s:refresh_cscope()
+    let current_dir = getcwd()
+    execute("chdir " . s:csout_dir)
+    call s:make_cscope_out()
+    call s:add_cscope_out()
+    execute("chdir " . current_dir)
+    unlet current_dir
+endfunction
+
+function! s:map_key()
+    map <F5> <ESC>:CSRefresh<CR>
+    echo "push <F5> refresh cscope.out data"
+endfunction
+
+command! -nargs=0 -bar NCSInit call s:init_cscope()
+command! -nargs=0 -bar NCSSet call s:set_cscope()
+command! -nargs=0 -bar NCSRefresh call s:refresh_cscope()
+command! -nargs=0 -bar NCSKey call s:map_key()
+

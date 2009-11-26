@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://autotoggle/skin/overlay.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://autotoggle/locale/autotoggle.dtd">
+
+<overlay id="autotoggle-overlay" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/x-javascript" src="chrome://autotoggle/content/overlay.js" />
+	
+    <toolbarpalette id="BrowserToolbarPalette">
+        <toolbarbutton 
+            id="at-toolbar-button" 
+            type="menu-button"
+            title="&at.app.title;" 
+            class="toolbarbutton-1"
+            oncommand="AutoToggleController.onToggleMenu();">
+          <menupopup>
+            <menuitem id="at-menu-menubar" type="checkbox"
+              label="&at.menu.menubar;" tooltiptext="&at.menu.menubar.tooltip;"
+              oncommand="AutoToggleController.onToolbarMenu()" />
+              
+            <menuitem id="at-menu-navbar" type="checkbox"
+              label="&at.menu.navbar;" tooltiptext="&at.menu.navbar.tooltip;"
+              oncommand="AutoToggleController.onToolbarMenu()" />
+
+            <menuitem id="at-menu-personalbar" type="checkbox"
+              label="&at.menu.personalbar;" tooltiptext="&at.menu.personalbar.tooltip;"
+              oncommand="AutoToggleController.onToolbarMenu()" />
+
+            <menuseparator />
+
+            <menuitem id="at-menu-preference" 
+              label="&at.menu.preference;" tooltiptext="&at.menu.preference.tooltip;"
+              oncommand="AutoToggleController.showPreference()" />
+          </menupopup>
+        </toolbarbutton>
+    </toolbarpalette>
+</overlay>

@@ -1,0 +1,488 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+%	matchit.vim	/^nnoremap <silent> %  :<C-U>call <SID>Match_wrapper('',1,'n') <CR>$/;"	m
+%	matchit.vim	/^onoremap <silent> %  v:<C-U>call <SID>Match_wrapper('',1,'o') <CR>$/;"	m
+%	matchit.vim	/^vnoremap <silent> %  :<C-U>call <SID>Match_wrapper('',1,'v') <CR>m'gv``$/;"	m
+<C-C>	comments.vim	/^noremap  <silent> <C-C> :call CommentLine()<CR>$/;"	m
+<C-C>	comments.vim	/^vnoremap <silent> <C-C> :call RangeCommentLine()<CR>$/;"	m
+<C-X>	comments.vim	/^noremap  <silent> <C-X> :call UnCommentLine()<CR>$/;"	m
+<C-X>	comments.vim	/^vnoremap <silent> <C-X> :call RangeUnCommentLine()<CR>$/;"	m
+<Plug>AutocomplpopOnPopupPost	autocomplpop.vim	/^inoremap <silent> <expr> <Plug>AutocomplpopOnPopupPost <SID>GetPopupFeeder().on_popup_post()$/;"	m
+<SID>YRGetChar	yankring.vim	/^inoremap <script> <SID>YRGetChar <c-r>=YRGetChar()<CR>$/;"	m
+<SID>xx	taglist.vim	/^    map <SID>xx <SID>xx$/;"	m
+<SID>yrrecord	yankring.vim	/^inoremap <silent> <SID>yrrecord <C-R>=YRRecord3()<cr>$/;"	m
+<SID>yrrecord	yankring.vim	/^nnoremap <silent> <SID>yrrecord :call YRRecord3()<cr>$/;"	m
+<space>	etc_helper.vim	/^nmap <space> :call SelectIndent()<cr>$/;"	m
+AutoComplPopDisable	autocomplpop.vim	/^command! -bar -narg=0 AutoComplPopDisable call s:Disable()$/;"	c
+AutoComplPopEnable	autocomplpop.vim	/^command! -bar -narg=0 AutoComplPopEnable  call s:Enable()$/;"	c
+AutoComplPopLock	autocomplpop.vim	/^command! -bar -narg=0 AutoComplPopLock    call s:PopupFeeder.lock()$/;"	c
+AutoComplPopUnlock	autocomplpop.vim	/^command! -bar -narg=0 AutoComplPopUnlock  call s:PopupFeeder.unlock()$/;"	c
+Bs	etc_helper.vim	/^command! -nargs=1 Bs :call BufSel("<args>")$/;"	c
+BufInit	rails.vim	/^function! s:BufInit(path)$/;"	f
+BufSel	etc_helper.vim	/^function! BufSel(pattern)$/;"	f
+CSInit	cscope_helper.vim	/^command! -nargs=0 -bar CSInit call s:init_cscope()$/;"	c
+CSKey	cscope_helper.vim	/^command! -nargs=0 -bar CSKey call s:map_key()$/;"	c
+CSProject	etc_helper.vim	/^command! -nargs=0 -bar CSProject call s:projec_init()$/;"	c
+CSRefresh	cscope_helper.vim	/^command! -nargs=0 -bar CSRefresh call s:refresh_cscope()$/;"	c
+CSSet	cscope_helper.vim	/^command! -nargs=0 -bar CSSet call s:set_cscope()$/;"	c
+CTInit	ctags_helper.vim	/^command! -nargs=0 -bar CTInit call s:init_ctags()$/;"	c
+CTRefresh	ctags_helper.vim	/^command! -nargs=0 -bar CTRefresh call s:refresh_ctags()$/;"	c
+CTSet	ctags_helper.vim	/^command! -nargs=0 -bar CTSet call s:set_tags_dir()$/;"	c
+Choose	matchit.vim	/^fun! s:Choose(patterns, string, comma, branch, prefix, suffix, ...)$/;"	f
+CleanUp	matchit.vim	/^fun! s:CleanUp(options, mode, startline, startcol, ...)$/;"	f
+CommentLine	comments.vim	/^function! CommentLine()$/;"	f
+Count	matchit.vim	/^fun! s:Count(string, pattern, ...)$/;"	f
+CreateMenus	rails.vim	/^function! s:CreateMenus() abort$/;"	f
+Detect	rails.vim	/^function! s:Detect(filename)$/;"	f
+Disable	autocomplpop.vim	/^function! s:Disable()$/;"	f
+Enable	autocomplpop.vim	/^function! s:Enable()$/;"	f
+FeedMapping.map	autocomplpop.vim	/^function! s:FeedMapping.map()$/;"	f
+FeedMapping.unmap	autocomplpop.vim	/^function! s:FeedMapping.unmap()$/;"	f
+GetPopupFeeder	autocomplpop.vim	/^function! s:GetPopupFeeder()$/;"	f
+GetSidPrefix	autocomplpop.vim	/^function! s:GetSidPrefix()$/;"	f
+InsertRefs	matchit.vim	/^fun! s:InsertRefs(groupBR, prefix, group, suffix, matchline)$/;"	f
+MRU	mru.vim	/^command! -nargs=? -complete=customlist,s:MRU_Complete MRU$/;"	c
+MRU_AddFile	mru.vim	/^function! s:MRU_AddFile(acmd_bufnr)$/;"	f
+MRU_Add_Menu	mru.vim	/^    let MRU_Add_Menu = 1$/;"	v
+MRU_Auto_Close	mru.vim	/^    let MRU_Auto_Close = 1$/;"	v
+MRU_Cmd	mru.vim	/^function! s:MRU_Cmd(pat)$/;"	f
+MRU_Complete	mru.vim	/^function! s:MRU_Complete(ArgLead, CmdLine, CursorPos)$/;"	f
+MRU_Edit_File	mru.vim	/^function! s:MRU_Edit_File(filename, sanitized)$/;"	f
+MRU_Exclude_Files	mru.vim	/^    let MRU_Exclude_Files = ''$/;"	v
+MRU_File	mru.vim	/^                let MRU_File = $USERPROFILE . '\\_vim_mru_files'$/;"	v
+MRU_File	mru.vim	/^        let MRU_File = $HOME . '\/.vim_mru_files'$/;"	v
+MRU_File	mru.vim	/^        let MRU_File = $VIM . '\/_vim_mru_files'$/;"	v
+MRU_Include_Files	mru.vim	/^    let MRU_Include_Files = ''$/;"	v
+MRU_LoadList	mru.vim	/^function! s:MRU_LoadList()$/;"	f
+MRU_Max_Entries	mru.vim	/^    let MRU_Max_Entries = 10$/;"	v
+MRU_Open_Window	mru.vim	/^function! s:MRU_Open_Window(...)$/;"	f
+MRU_Refresh_Menu	mru.vim	/^function! s:MRU_Refresh_Menu()$/;"	f
+MRU_SaveList	mru.vim	/^function! s:MRU_SaveList()$/;"	f
+MRU_Use_Current_Window	mru.vim	/^    let MRU_Use_Current_Window = 0$/;"	v
+MRU_Warn_Msg	mru.vim	/^function! s:MRU_Warn_Msg(msg)$/;"	f
+MRU_Window_Edit_File	mru.vim	/^function! s:MRU_Window_Edit_File(win_opt)$/;"	f
+MRU_Window_Height	mru.vim	/^    let MRU_Window_Height = 8$/;"	v
+MRU_add_files_to_menu	mru.vim	/^function! s:MRU_add_files_to_menu(prefix, file_list)$/;"	f
+MRU_escape_filename	mru.vim	/^function! s:MRU_escape_filename(fname)$/;"	f
+MakeDefaultBehavior	autocomplpop.vim	/^function! s:MakeDefaultBehavior()$/;"	f
+MatchDebug	matchit.vim	/^  command! -nargs=0 MatchDebug call s:Match_debug()$/;"	c
+Match_debug	matchit.vim	/^fun! s:Match_debug()$/;"	f
+Match_wrapper	matchit.vim	/^function! s:Match_wrapper(word, forward, mode) range$/;"	f
+MultiMatch	matchit.vim	/^fun! s:MultiMatch(spflag, mode)$/;"	f
+OpenTerminal	open_terminal.vim	/^command! -nargs=0 -bar OpenTerminal call s:open_terminal()$/;"	c
+OptionManager.restore_all	autocomplpop.vim	/^function! s:OptionManager.restore_all()$/;"	f
+OptionManager.set	autocomplpop.vim	/^function! s:OptionManager.set(name, value)$/;"	f
+ParseSkip	matchit.vim	/^fun! s:ParseSkip(str)$/;"	f
+ParseWords	matchit.vim	/^fun! s:ParseWords(groups)$/;"	f
+PopupFeeder.check_cursor_and_update	autocomplpop.vim	/^function! s:PopupFeeder.check_cursor_and_update()$/;"	f
+PopupFeeder.feed	autocomplpop.vim	/^function! s:PopupFeeder.feed()$/;"	f
+PopupFeeder.finish	autocomplpop.vim	/^function! s:PopupFeeder.finish()$/;"	f
+PopupFeeder.lock	autocomplpop.vim	/^function! s:PopupFeeder.lock()$/;"	f
+PopupFeeder.on_popup_post	autocomplpop.vim	/^function! s:PopupFeeder.on_popup_post()$/;"	f
+PopupFeeder.unlock	autocomplpop.vim	/^function! s:PopupFeeder.unlock()$/;"	f
+ProjectMenu	rails.vim	/^function! s:ProjectMenu()$/;"	f
+Rails	rails.vim	/^command! -bar -bang -nargs=* -complete=dir Rails :if s:autoload()|call rails#new_app_command(<bang>0,<f-args>)|endif$/;"	c
+RangeCommentLine	comments.vim	/^function! RangeCommentLine()$/;"	f
+RangeUnCommentLine	comments.vim	/^function! RangeUnCommentLine()$/;"	f
+Ref	matchit.vim	/^fun! s:Ref(string, d, ...)$/;"	f
+Resolve	matchit.vim	/^fun! s:Resolve(source, target, output)$/;"	f
+SelectIndent	etc_helper.vim	/^function! SelectIndent ()$/;"	f
+SetOptDefault	rails.vim	/^function! s:SetOptDefault(opt,val)$/;"	f
+Sudo	sudo.vim	/^augroup Sudo$/;"	a
+SudoRead	sudo.vim	/^command! -nargs=1 SudoRead call SudoRead(<f-args>)$/;"	c
+SudoRead	sudo.vim	/^function! SudoRead(url)$/;"	f
+SudoWrite	sudo.vim	/^command! -nargs=1 SudoWrite call SudoWrite(<f-args>)$/;"	c
+SudoWrite	sudo.vim	/^function! SudoWrite (url) abort$/;"	f
+TagList_IsValid	taglist.vim	/^function! TagList_IsValid()$/;"	f
+TagList_Start	taglist.vim	/^function! TagList_Start()$/;"	f
+TagList_WrapUp	taglist.vim	/^function! TagList_WrapUp()$/;"	f
+TagList_title	taglist.vim	/^    let TagList_title = "__Tag_List__"$/;"	v
+Tlist	taglist.vim	/^    command! -nargs=0 -bar Tlist TlistToggle$/;"	c
+TlistAddFiles	taglist.vim	/^    command! -nargs=+ -complete=file TlistAddFiles$/;"	c
+TlistAddFilesRecursive	taglist.vim	/^    command! -nargs=+ -complete=dir TlistAddFilesRecursive$/;"	c
+TlistClose	taglist.vim	/^    command! -nargs=0 -bar TlistClose call s:Tlist_Window_Close()$/;"	c
+TlistDebug	taglist.vim	/^    command! -nargs=? -complete=file -bar TlistDebug$/;"	c
+TlistHighlightTag	taglist.vim	/^    command! -nargs=0 -bar TlistHighlightTag call s:Tlist_Window_Highlight_Tag($/;"	c
+TlistLock	taglist.vim	/^    command! -bar TlistLock let Tlist_Auto_Update=0$/;"	c
+TlistMessages	taglist.vim	/^    command! -nargs=0 -bar TlistMessages call s:Tlist_Debug_Show()$/;"	c
+TlistOpen	taglist.vim	/^    command! -nargs=0 -bar TlistOpen call s:Tlist_Window_Open()$/;"	c
+TlistSessionLoad	taglist.vim	/^    command! -nargs=* -complete=file TlistSessionLoad$/;"	c
+TlistSessionSave	taglist.vim	/^    command! -nargs=* -complete=file TlistSessionSave$/;"	c
+TlistShowPrototype	taglist.vim	/^    command! -nargs=* -complete=buffer TlistShowPrototype$/;"	c
+TlistShowTag	taglist.vim	/^    command! -nargs=* -complete=buffer TlistShowTag$/;"	c
+TlistSync	taglist.vim	/^    command! -nargs=0 -bar TlistSync TlistHighlightTag$/;"	c
+TlistToggle	taglist.vim	/^    command! -nargs=0 -bar TlistToggle call s:Tlist_Window_Toggle()$/;"	c
+TlistUndebug	taglist.vim	/^    command! -nargs=0 -bar TlistUndebug  call s:Tlist_Debug_Disable()$/;"	c
+TlistUnlock	taglist.vim	/^    command! -bar TlistUnlock let Tlist_Auto_Update=1$/;"	c
+TlistUpdate	taglist.vim	/^    command! -nargs=0 -bar TlistUpdate call s:Tlist_Update_Current_File()$/;"	c
+Tlist_Add_Files	taglist.vim	/^function! s:Tlist_Add_Files(...)$/;"	f
+Tlist_Add_Files_Recursive	taglist.vim	/^function! s:Tlist_Add_Files_Recursive(dir, ...)$/;"	f
+Tlist_Auto_Highlight_Tag	taglist.vim	/^        let Tlist_Auto_Highlight_Tag = 1$/;"	v
+Tlist_Auto_Open	taglist.vim	/^        let Tlist_Auto_Open = 0$/;"	v
+Tlist_Auto_Update	taglist.vim	/^        let Tlist_Auto_Update = 1$/;"	v
+Tlist_Ballon_Expr	taglist.vim	/^function! Tlist_Ballon_Expr()$/;"	f
+Tlist_Buffer_Removed	taglist.vim	/^function! s:Tlist_Buffer_Removed(filename)$/;"	f
+Tlist_Change_Sort	taglist.vim	/^function! s:Tlist_Change_Sort(caller, action, sort_type)$/;"	f
+Tlist_Close_On_Select	taglist.vim	/^        let Tlist_Close_On_Select = 0$/;"	v
+Tlist_Compact_Format	taglist.vim	/^        let Tlist_Compact_Format = 0$/;"	v
+Tlist_Ctags_Cmd	taglist.vim	/^            let Tlist_Ctags_Cmd = 'ctags'$/;"	v
+Tlist_Ctags_Cmd	taglist.vim	/^            let Tlist_Ctags_Cmd = 'ctags.exe'$/;"	v
+Tlist_Ctags_Cmd	taglist.vim	/^            let Tlist_Ctags_Cmd = 'exctags'$/;"	v
+Tlist_Ctags_Cmd	taglist.vim	/^            let Tlist_Ctags_Cmd = 'exuberant-ctags'$/;"	v
+Tlist_Ctags_Cmd	taglist.vim	/^            let Tlist_Ctags_Cmd = 'tags'$/;"	v
+Tlist_Debug_Disable	taglist.vim	/^function! s:Tlist_Debug_Disable(...)$/;"	f
+Tlist_Debug_Enable	taglist.vim	/^function! s:Tlist_Debug_Enable(...)$/;"	f
+Tlist_Debug_Show	taglist.vim	/^function! s:Tlist_Debug_Show()$/;"	f
+Tlist_Detect_Filetype	taglist.vim	/^function! s:Tlist_Detect_Filetype(fname)$/;"	f
+Tlist_Discard_FileInfo	taglist.vim	/^function! s:Tlist_Discard_FileInfo(fidx)$/;"	f
+Tlist_Discard_TagInfo	taglist.vim	/^function! s:Tlist_Discard_TagInfo(fidx)$/;"	f
+Tlist_Display_Prototype	taglist.vim	/^        let Tlist_Display_Prototype = 0$/;"	v
+Tlist_Display_Tag_Scope	taglist.vim	/^        let Tlist_Display_Tag_Scope = 1$/;"	v
+Tlist_Enable_Fold_Column	taglist.vim	/^        let Tlist_Enable_Fold_Column = 1$/;"	v
+Tlist_Exe_Cmd_No_Acmds	taglist.vim	/^function! s:Tlist_Exe_Cmd_No_Acmds(cmd)$/;"	f
+Tlist_Exit_OnlyWindow	taglist.vim	/^        let Tlist_Exit_OnlyWindow = 0$/;"	v
+Tlist_Extract_Tag_Scope	taglist.vim	/^function! s:Tlist_Extract_Tag_Scope(tag_line)$/;"	f
+Tlist_Extract_Tagtype	taglist.vim	/^function! s:Tlist_Extract_Tagtype(tag_line)$/;"	f
+Tlist_FileType_Init	taglist.vim	/^function! s:Tlist_FileType_Init(ftype)$/;"	f
+Tlist_File_Fold_Auto_Close	taglist.vim	/^        let Tlist_File_Fold_Auto_Close = 0$/;"	v
+Tlist_Find_Nearest_Tag_Idx	taglist.vim	/^function! s:Tlist_Find_Nearest_Tag_Idx(fidx, linenum)$/;"	f
+Tlist_GainFocus_On_ToggleOpen	taglist.vim	/^        let Tlist_GainFocus_On_ToggleOpen = 0$/;"	v
+Tlist_Get_Buffer_Filetype	taglist.vim	/^function! s:Tlist_Get_Buffer_Filetype(bnum)$/;"	f
+Tlist_Get_File_Index	taglist.vim	/^function! s:Tlist_Get_File_Index(fname)$/;"	f
+Tlist_Get_Tag_Linenum	taglist.vim	/^function! s:Tlist_Get_Tag_Linenum(fidx, tidx)$/;"	f
+Tlist_Get_Tag_Prototype	taglist.vim	/^function! s:Tlist_Get_Tag_Prototype(fidx, tidx)$/;"	f
+Tlist_Get_Tag_Prototype_By_Line	taglist.vim	/^function! Tlist_Get_Tag_Prototype_By_Line(...)$/;"	f
+Tlist_Get_Tag_SearchPat	taglist.vim	/^function! s:Tlist_Get_Tag_SearchPat(fidx, tidx)$/;"	f
+Tlist_Get_Tag_Type_By_Tag	taglist.vim	/^function! s:Tlist_Get_Tag_Type_By_Tag(fidx, tidx)$/;"	f
+Tlist_Get_Tagname_By_Line	taglist.vim	/^function! Tlist_Get_Tagname_By_Line(...)$/;"	f
+Tlist_Highlight_Tag_On_BufEnter	taglist.vim	/^        let Tlist_Highlight_Tag_On_BufEnter = 1$/;"	v
+Tlist_Inc_Winwidth	taglist.vim	/^            let Tlist_Inc_Winwidth = 0$/;"	v
+Tlist_Inc_Winwidth	taglist.vim	/^            let Tlist_Inc_Winwidth = 1$/;"	v
+Tlist_Init_File	taglist.vim	/^function! s:Tlist_Init_File(filename, ftype)$/;"	f
+Tlist_Log_Msg	taglist.vim	/^function! s:Tlist_Log_Msg(msg)$/;"	f
+Tlist_Max_Submenu_Items	taglist.vim	/^        let Tlist_Max_Submenu_Items = 20$/;"	v
+Tlist_Max_Tag_Length	taglist.vim	/^        let Tlist_Max_Tag_Length = 10$/;"	v
+Tlist_Menu_Add_Base_Menu	taglist.vim	/^function! s:Tlist_Menu_Add_Base_Menu()$/;"	f
+Tlist_Menu_File_Refresh	taglist.vim	/^function! s:Tlist_Menu_File_Refresh(fidx)$/;"	f
+Tlist_Menu_Get_Tag_Type_Cmd	taglist.vim	/^function! s:Tlist_Menu_Get_Tag_Type_Cmd(fidx, ftype, add_ttype_name, ttype_idx)$/;"	f
+Tlist_Menu_Init	taglist.vim	/^function! s:Tlist_Menu_Init()$/;"	f
+Tlist_Menu_Jump_To_Tag	taglist.vim	/^function! s:Tlist_Menu_Jump_To_Tag(tidx)$/;"	f
+Tlist_Menu_Refresh	taglist.vim	/^function! s:Tlist_Menu_Refresh()$/;"	f
+Tlist_Menu_Remove_File	taglist.vim	/^function! s:Tlist_Menu_Remove_File()$/;"	f
+Tlist_Menu_Update_File	taglist.vim	/^function! s:Tlist_Menu_Update_File(clear_menu)$/;"	f
+Tlist_Parse_Tagline	taglist.vim	/^function! s:Tlist_Parse_Tagline(tag_line)$/;"	f
+Tlist_Post_Close_Cleanup	taglist.vim	/^function! s:Tlist_Post_Close_Cleanup()$/;"	f
+Tlist_Process_Dir	taglist.vim	/^function! s:Tlist_Process_Dir(dir_name, pat)$/;"	f
+Tlist_Process_File	taglist.vim	/^function! s:Tlist_Process_File(filename, ftype)$/;"	f
+Tlist_Process_File_Always	taglist.vim	/^        let Tlist_Process_File_Always = 0$/;"	v
+Tlist_Process_Filelist	taglist.vim	/^function! s:Tlist_Process_Filelist(file_names)$/;"	f
+Tlist_Refresh	taglist.vim	/^function! s:Tlist_Refresh()$/;"	f
+Tlist_Refresh_Folds	taglist.vim	/^function! s:Tlist_Refresh_Folds()$/;"	f
+Tlist_Remove_File	taglist.vim	/^function! s:Tlist_Remove_File(file_idx, user_request)$/;"	f
+Tlist_Session_Load	taglist.vim	/^function! s:Tlist_Session_Load(...)$/;"	f
+Tlist_Session_Save	taglist.vim	/^function! s:Tlist_Session_Save(...)$/;"	f
+Tlist_Set_App	taglist.vim	/^function! Tlist_Set_App(name)$/;"	f
+Tlist_Show_Menu	taglist.vim	/^        let Tlist_Show_Menu = 0$/;"	v
+Tlist_Show_One_File	taglist.vim	/^        let Tlist_Show_One_File = 0$/;"	v
+Tlist_Skip_File	taglist.vim	/^function! s:Tlist_Skip_File(filename, ftype)$/;"	f
+Tlist_Sort_Type	taglist.vim	/^        let Tlist_Sort_Type = 'order'$/;"	v
+Tlist_Update_Current_File	taglist.vim	/^function! s:Tlist_Update_Current_File()$/;"	f
+Tlist_Update_File	taglist.vim	/^function! Tlist_Update_File(filename, ftype)$/;"	f
+Tlist_Update_Remove_List	taglist.vim	/^function! s:Tlist_Update_Remove_List(filename, add)$/;"	f
+Tlist_Use_Horiz_Window	taglist.vim	/^        let Tlist_Use_Horiz_Window = 0$/;"	v
+Tlist_Use_Right_Window	taglist.vim	/^        let Tlist_Use_Right_Window = 0$/;"	v
+Tlist_Use_SingleClick	taglist.vim	/^        let Tlist_Use_SingleClick = 0$/;"	v
+Tlist_User_Removed_File	taglist.vim	/^function! s:Tlist_User_Removed_File(filename)$/;"	f
+Tlist_Vim_Session_Load	taglist.vim	/^function! s:Tlist_Vim_Session_Load()$/;"	f
+Tlist_Warning_Msg	taglist.vim	/^function! s:Tlist_Warning_Msg(msg)$/;"	f
+Tlist_WinHeight	taglist.vim	/^        let Tlist_WinHeight = 10$/;"	v
+Tlist_WinWidth	taglist.vim	/^        let Tlist_WinWidth = 30$/;"	v
+Tlist_Window_Check_Auto_Open	taglist.vim	/^function! s:Tlist_Window_Check_Auto_Open()$/;"	f
+Tlist_Window_Check_Width	taglist.vim	/^function! s:Tlist_Window_Check_Width()$/;"	f
+Tlist_Window_Close	taglist.vim	/^function! s:Tlist_Window_Close()$/;"	f
+Tlist_Window_Create	taglist.vim	/^function! s:Tlist_Window_Create()$/;"	f
+Tlist_Window_Display_Help	taglist.vim	/^function! s:Tlist_Window_Display_Help()$/;"	f
+Tlist_Window_Exit_Only_Window	taglist.vim	/^function! s:Tlist_Window_Exit_Only_Window()$/;"	f
+Tlist_Window_Get_File_Index_By_Linenum	taglist.vim	/^function! s:Tlist_Window_Get_File_Index_By_Linenum(lnum)$/;"	f
+Tlist_Window_Get_Tag_Index	taglist.vim	/^function! s:Tlist_Window_Get_Tag_Index(fidx, lnum)$/;"	f
+Tlist_Window_Get_Tag_Type_By_Linenum	taglist.vim	/^function! s:Tlist_Window_Get_Tag_Type_By_Linenum(fidx, lnum)$/;"	f
+Tlist_Window_Goto_Window	taglist.vim	/^function! s:Tlist_Window_Goto_Window()$/;"	f
+Tlist_Window_Highlight_Line	taglist.vim	/^function! s:Tlist_Window_Highlight_Line()$/;"	f
+Tlist_Window_Highlight_Tag	taglist.vim	/^function! s:Tlist_Window_Highlight_Tag(filename, cur_lnum, cntx, center)$/;"	f
+Tlist_Window_Init	taglist.vim	/^function! s:Tlist_Window_Init()$/;"	f
+Tlist_Window_Jump_To_Tag	taglist.vim	/^function! s:Tlist_Window_Jump_To_Tag(win_ctrl)$/;"	f
+Tlist_Window_Mark_File_Window	taglist.vim	/^function! s:Tlist_Window_Mark_File_Window()$/;"	f
+Tlist_Window_Move_To_File	taglist.vim	/^function! s:Tlist_Window_Move_To_File(dir)$/;"	f
+Tlist_Window_Open	taglist.vim	/^function! s:Tlist_Window_Open()$/;"	f
+Tlist_Window_Open_File	taglist.vim	/^function! s:Tlist_Window_Open_File(win_ctrl, filename, tagpat)$/;"	f
+Tlist_Window_Open_File_Fold	taglist.vim	/^function! s:Tlist_Window_Open_File_Fold(acmd_bufnr)$/;"	f
+Tlist_Window_Refresh	taglist.vim	/^function! s:Tlist_Window_Refresh()$/;"	f
+Tlist_Window_Refresh_File	taglist.vim	/^function! s:Tlist_Window_Refresh_File(filename, ftype)$/;"	f
+Tlist_Window_Remove_File_From_Display	taglist.vim	/^function! s:Tlist_Window_Remove_File_From_Display(fidx)$/;"	f
+Tlist_Window_Show_Info	taglist.vim	/^function! s:Tlist_Window_Show_Info()$/;"	f
+Tlist_Window_Toggle	taglist.vim	/^function! s:Tlist_Window_Toggle()$/;"	f
+Tlist_Window_Toggle_Help_Text	taglist.vim	/^function! s:Tlist_Window_Toggle_Help_Text()$/;"	f
+Tlist_Window_Update_File	taglist.vim	/^function! s:Tlist_Window_Update_File()$/;"	f
+Tlist_Window_Update_Line_Offsets	taglist.vim	/^function! s:Tlist_Window_Update_Line_Offsets(start_idx, increment, offset)$/;"	f
+Tlist_Window_Zoom	taglist.vim	/^function! s:Tlist_Window_Zoom()$/;"	f
+UnCommentLine	comments.vim	/^function! UnCommentLine()$/;"	f
+Wholematch	matchit.vim	/^fun! s:Wholematch(string, pat, start)$/;"	f
+YRClear	yankring.vim	/^command!                           YRClear        call s:YRClear()$/;"	c
+YRClear	yankring.vim	/^function! s:YRClear()$/;"	f
+YRDeleteRange	yankring.vim	/^command! -range -bang     -nargs=? YRDeleteRange  <line1>,<line2>call s:YRYankRange(<bang>1, <args>)$/;"	c
+YRDisplayElem	yankring.vim	/^function! s:YRDisplayElem(disp_nbr, script_var) $/;"	f
+YRDoRepeat	yankring.vim	/^function! s:YRDoRepeat() $/;"	f
+YRErrorMsg	yankring.vim	/^function! s:YRErrorMsg(msg)$/;"	f
+YRFocusGained	yankring.vim	/^function! s:YRFocusGained()$/;"	f
+YRGetChar	yankring.vim	/^function! s:YRGetChar()$/;"	f
+YRGetElem	yankring.vim	/^command!                  -nargs=* YRGetElem      call s:YRGetElem(<args>)$/;"	c
+YRGetElem	yankring.vim	/^function! s:YRGetElem(...) $/;"	f
+YRGetMultiple	yankring.vim	/^command!        -bang     -nargs=? YRGetMultiple  call s:YRGetMultiple(<bang>0, <args>)$/;"	c
+YRGetMultiple	yankring.vim	/^function! s:YRGetMultiple(reverse_order, ...) $/;"	f
+YRGetNextElem	yankring.vim	/^function! s:YRGetNextElem(start, iter) $/;"	f
+YRGetValElemNbr	yankring.vim	/^function! s:YRGetValElemNbr( position, type )$/;"	f
+YRHistoryRead	yankring.vim	/^function! s:YRHistoryRead()$/;"	f
+YRHistorySave	yankring.vim	/^function! s:YRHistorySave()$/;"	f
+YRHistoryUpgrade	yankring.vim	/^function! s:YRHistoryUpgrade(version)$/;"	f
+YRInit	yankring.vim	/^function! s:YRInit(...)$/;"	f
+YRInsertLeave	yankring.vim	/^function! s:YRInsertLeave()$/;"	f
+YRMRUAdd	yankring.vim	/^function! s:YRMRUAdd( mru_list, element, element_type )$/;"	f
+YRMRUDel	yankring.vim	/^function! s:YRMRUDel( mru_list, elem_nbr )$/;"	f
+YRMRUElemFormat	yankring.vim	/^function! s:YRMRUElemFormat( element, element_type )$/;"	f
+YRMRUGet	yankring.vim	/^function! s:YRMRUGet( mru_list, position )$/;"	f
+YRMRUHas	yankring.vim	/^function! s:YRMRUHas( mru_list, find_str )$/;"	f
+YRMRUReset	yankring.vim	/^function! s:YRMRUReset( mru_list )$/;"	f
+YRMRUSize	yankring.vim	/^function! s:YRMRUSize( mru_list )$/;"	f
+YRMapsCreate	yankring.vim	/^command!                  -nargs=0 YRMapsCreate   call s:YRMapsCreate()$/;"	c
+YRMapsCreate	yankring.vim	/^function! s:YRMapsCreate(...)$/;"	f
+YRMapsDelete	yankring.vim	/^command!                  -nargs=0 YRMapsDelete   call s:YRMapsDelete()$/;"	c
+YRMapsDelete	yankring.vim	/^function! s:YRMapsDelete(...)$/;"	f
+YRMapsExpression	yankring.vim	/^function! YRMapsExpression(sid, motion, ...)$/;"	f
+YRMapsMacro	yankring.vim	/^function! s:YRMapsMacro(bang, ...) range$/;"	f
+YRPaste	yankring.vim	/^command! -count -register -nargs=* YRPaste        call s:YRPaste(0,1,<args>)$/;"	c
+YRPaste	yankring.vim	/^function! s:YRPaste(replace_last_paste_selection, nextvalue, direction, ...) $/;"	f
+YRPop	yankring.vim	/^command!                  -nargs=? YRPop          <line1>,<line2>call s:YRPop(<args>)$/;"	c
+YRPop	yankring.vim	/^function! s:YRPop(...)$/;"	f
+YRPush	yankring.vim	/^command!        -register -nargs=? YRPush         call s:YRPush(<args>)$/;"	c
+YRPush	yankring.vim	/^function! s:YRPush(...) $/;"	f
+YRRecord	yankring.vim	/^function! YRRecord(...) $/;"	f
+YRRecord3	yankring.vim	/^function! YRRecord3() $/;"	f
+YRRegister	yankring.vim	/^function! s:YRRegister()$/;"	f
+YRReplace	yankring.vim	/^command! -count -register -nargs=* YRReplace      call s:YRPaste(1,<args>)$/;"	c
+YRReset	yankring.vim	/^function! s:YRReset()$/;"	f
+YRSearch	yankring.vim	/^command!                  -nargs=? YRSearch       call s:YRSearch(<q-args>)$/;"	c
+YRSearch	yankring.vim	/^function! s:YRSearch(...) $/;"	f
+YRSetNumberedReg	yankring.vim	/^function! s:YRSetNumberedReg() $/;"	f
+YRSetPrevOP	yankring.vim	/^function! s:YRSetPrevOP(op_code, count, reg, mode) $/;"	f
+YRShow	yankring.vim	/^command!                  -nargs=? YRShow         call s:YRShow(<args>)$/;"	c
+YRShow	yankring.vim	/^function! s:YRShow(...) $/;"	f
+YRToggle	yankring.vim	/^command!                  -nargs=? YRToggle       call s:YRToggle(<args>)$/;"	c
+YRToggle	yankring.vim	/^function! s:YRToggle(...)$/;"	f
+YRWarningMsg	yankring.vim	/^function! s:YRWarningMsg(msg)$/;"	f
+YRWinLeave	yankring.vim	/^function! s:YRWinLeave()$/;"	f
+YRWindowAction	yankring.vim	/^function! s:YRWindowAction(op, cmd_mode) range$/;"	f
+YRWindowActionN	yankring.vim	/^function! s:YRWindowActionN(op, cmd_mode) $/;"	f
+YRWindowOpen	yankring.vim	/^function! s:YRWindowOpen(results)$/;"	f
+YRWindowStatus	yankring.vim	/^function! s:YRWindowStatus(show_help)$/;"	f
+YRWindowUpdate	yankring.vim	/^function! s:YRWindowUpdate()$/;"	f
+YRYankCount	yankring.vim	/^command! -count -register -nargs=* YRYankCount    call s:YRYankCount(<args>)$/;"	c
+YRYankCount	yankring.vim	/^function! s:YRYankCount(...) range$/;"	f
+YRYankRange	yankring.vim	/^command! -range -bang     -nargs=? YRYankRange    <line1>,<line2>call s:YRYankRange(<bang>0, <args>)$/;"	c
+YRYankRange	yankring.vim	/^function! s:YRYankRange(do_delete_selection, ...) range$/;"	f
+YankRing	yankring.vim	/^augroup YankRing$/;"	a
+[%	matchit.vim	/^nnoremap <silent> [% :<C-U>call <SID>MultiMatch("bW", "n") <CR>$/;"	m
+[%	matchit.vim	/^onoremap <silent> [% v:<C-U>call <SID>MultiMatch("bW", "o") <CR>$/;"	m
+[%	matchit.vim	/^vmap [% <Esc>[%m'gv``$/;"	m
+]%	matchit.vim	/^nnoremap <silent> ]% :<C-U>call <SID>MultiMatch("W",  "n") <CR>$/;"	m
+]%	matchit.vim	/^onoremap <silent> ]% v:<C-U>call <SID>MultiMatch("W",  "o") <CR>$/;"	m
+]%	matchit.vim	/^vmap ]% <Esc>]%m'gv``$/;"	m
+a%	matchit.vim	/^vmap a% <Esc>[%v]%$/;"	m
+add_cscope_out	cscope_helper.vim	/^function! s:add_cscope_out()$/;"	f
+autoload	rails.vim	/^function! s:autoload(...)$/;"	f
+csout_path	cscope_helper.vim	/^function! s:csout_path()$/;"	f
+error	rails.vim	/^function! s:error(str)$/;"	f
+escvar	rails.vim	/^function! s:escvar(r)$/;"	f
+g%	matchit.vim	/^nnoremap <silent> g% :<C-U>call <SID>Match_wrapper('',0,'n') <CR>$/;"	m
+g%	matchit.vim	/^onoremap <silent> g% v:<C-U>call <SID>Match_wrapper('',0,'o') <CR>$/;"	m
+g%	matchit.vim	/^vnoremap <silent> g% :<C-U>call <SID>Match_wrapper('',0,'v') <CR>m'gv``$/;"	m
+g:AutoComplPop_Behavior	autocomplpop.vim	/^  let g:AutoComplPop_Behavior = {}$/;"	v
+g:AutoComplPop_BehaviorCssOmniPropertyLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorCssOmniPropertyLength = 1$/;"	v
+g:AutoComplPop_BehaviorCssOmniValueLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorCssOmniValueLength = 0$/;"	v
+g:AutoComplPop_BehaviorFileLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorFileLength = 0$/;"	v
+g:AutoComplPop_BehaviorHtmlOmniLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorHtmlOmniLength = 0$/;"	v
+g:AutoComplPop_BehaviorKeywordLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorKeywordLength = 2$/;"	v
+g:AutoComplPop_BehaviorPythonOmniLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorPythonOmniLength = 0$/;"	v
+g:AutoComplPop_BehaviorRubyOmniMethodLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorRubyOmniMethodLength = 0$/;"	v
+g:AutoComplPop_BehaviorRubyOmniSymbolLength	autocomplpop.vim	/^  let g:AutoComplPop_BehaviorRubyOmniSymbolLength = 1$/;"	v
+g:AutoComplPop_CompleteOption	autocomplpop.vim	/^  let g:AutoComplPop_CompleteOption = '.,w,b,k'$/;"	v
+g:AutoComplPop_CompleteoptPreview	autocomplpop.vim	/^  let g:AutoComplPop_CompleteoptPreview = 0$/;"	v
+g:AutoComplPop_IgnoreCaseOption	autocomplpop.vim	/^  let g:AutoComplPop_IgnoreCaseOption = 0$/;"	v
+g:AutoComplPop_MappingDriven	autocomplpop.vim	/^  let g:AutoComplPop_MappingDriven = 0$/;"	v
+g:AutoComplPop_NotEnableAtStartup	autocomplpop.vim	/^  let g:AutoComplPop_NotEnableAtStartup = 0$/;"	v
+g:CS_key	cscope_helper.vim	/^    let g:CS_key = 1$/;"	v
+g:loaded_rails	rails.vim	/^let g:loaded_rails = 1$/;"	v
+g:yankring_clipboard_monitor	yankring.vim	/^    let g:yankring_clipboard_monitor = 1$/;"	v
+g:yankring_default_menu_mode	yankring.vim	/^    let g:yankring_default_menu_mode = 3$/;"	v
+g:yankring_del_v_key	yankring.vim	/^    let g:yankring_del_v_key = 'd x'$/;"	v
+g:yankring_dot_repeat_yank	yankring.vim	/^    let g:yankring_dot_repeat_yank = (&cpoptions=~'y'?1:0)$/;"	v
+g:yankring_enabled	yankring.vim	/^    let g:yankring_enabled = 1$/;"	v
+g:yankring_history_dir	yankring.vim	/^    let g:yankring_history_dir = expand('$HOME')$/;"	v
+g:yankring_history_dir	yankring.vim	/^    let g:yankring_history_dir = expand(g:yankring_history_dir)$/;"	v
+g:yankring_history_file	yankring.vim	/^    let g:yankring_history_file = 'yankring_history'$/;"	v
+g:yankring_ignore_duplicate	yankring.vim	/^    let g:yankring_ignore_duplicate = 1$/;"	v
+g:yankring_ignore_operator	yankring.vim	/^    let g:yankring_ignore_operator = 'g~ gu gU ! = gq g? > < zf g@'$/;"	v
+g:yankring_ignore_operator	yankring.vim	/^let g:yankring_ignore_operator = ' '.g:yankring_ignore_operator.' '$/;"	v
+g:yankring_manage_numbered_reg	yankring.vim	/^    let g:yankring_manage_numbered_reg = 0$/;"	v
+g:yankring_map_dot	yankring.vim	/^    let g:yankring_map_dot = 1$/;"	v
+g:yankring_max_display	yankring.vim	/^    let g:yankring_max_display = 0$/;"	v
+g:yankring_max_element_length	yankring.vim	/^    let g:yankring_max_element_length = 1048576$/;"	v
+g:yankring_max_history	yankring.vim	/^    let g:yankring_max_history = 100$/;"	v
+g:yankring_n_keys	yankring.vim	/^        let g:yankring_n_keys = 'Y D x X'$/;"	v
+g:yankring_n_keys	yankring.vim	/^        let g:yankring_n_keys = 'x yy dd yw dw ye de yE dE yiw diw yaw daw y$ d$ Y D yG dG ygg dgg'$/;"	v
+g:yankring_o_keys	yankring.vim	/^    let g:yankring_o_keys  = 'b B w W e E d h j k l H M L y G ^ 0 $ , ;'$/;"	v
+g:yankring_o_keys	yankring.vim	/^    let g:yankring_o_keys .= ' g_  g^ gm g$ gk gj gg ge gE - + _ '$/;"	v
+g:yankring_o_keys	yankring.vim	/^    let g:yankring_o_keys .= ' iw iW aw aW as is ap ip a] a[ i] i[ a) a( ab i) i( ib a> a< i> i< at it a} a{ aB i} i{ iB a" a'' a` i" i'' i`'$/;"	v
+g:yankring_paste_check_default_buffer	yankring.vim	/^    let g:yankring_paste_check_default_buffer = 1$/;"	v
+g:yankring_paste_n_akey	yankring.vim	/^    let g:yankring_paste_n_akey = 'p'$/;"	v
+g:yankring_paste_n_bkey	yankring.vim	/^    let g:yankring_paste_n_bkey = 'P'$/;"	v
+g:yankring_paste_using_g	yankring.vim	/^    let g:yankring_paste_using_g = 1$/;"	v
+g:yankring_paste_v_akey	yankring.vim	/^    let g:yankring_paste_v_akey = 'p'$/;"	v
+g:yankring_paste_v_bkey	yankring.vim	/^    let g:yankring_paste_v_bkey = 'P'$/;"	v
+g:yankring_persist	yankring.vim	/^    let g:yankring_persist = 1$/;"	v
+g:yankring_replace_n_nkey	yankring.vim	/^    let g:yankring_replace_n_nkey = '<C-N>'$/;"	v
+g:yankring_replace_n_pkey	yankring.vim	/^    let g:yankring_replace_n_pkey = '<C-P>'$/;"	v
+g:yankring_share_between_instances	yankring.vim	/^    let g:yankring_share_between_instances = 1$/;"	v
+g:yankring_v_key	yankring.vim	/^    let g:yankring_v_key = 'y'$/;"	v
+g:yankring_window_auto_close	yankring.vim	/^    let g:yankring_window_auto_close = 1$/;"	v
+g:yankring_window_height	yankring.vim	/^    let g:yankring_window_height = 8$/;"	v
+g:yankring_window_increment	yankring.vim	/^    let g:yankring_window_increment = 50$/;"	v
+g:yankring_window_use_bottom	yankring.vim	/^    let g:yankring_window_use_bottom = 1$/;"	v
+g:yankring_window_use_horiz	yankring.vim	/^    let g:yankring_window_use_horiz = 1$/;"	v
+g:yankring_window_use_right	yankring.vim	/^    let g:yankring_window_use_right = 1$/;"	v
+g:yankring_window_use_separate	yankring.vim	/^    let g:yankring_window_use_separate = 1$/;"	v
+g:yankring_window_width	yankring.vim	/^    let g:yankring_window_width = 30$/;"	v
+g:yankring_zap_keys	yankring.vim	/^    let g:yankring_zap_keys = 'f F t T \/ ? @'$/;"	v
+gsub	rails.vim	/^function! s:gsub(str,pat,rep)$/;"	f
+init_cscope	cscope_helper.vim	/^function! s:init_cscope()$/;"	f
+init_ctags	ctags_helper.vim	/^function! s:init_ctags()$/;"	f
+loaded_autocomplpop	autocomplpop.vim	/^let loaded_autocomplpop = 1$/;"	v
+loaded_comments_plugin	comments.vim	/^let loaded_comments_plugin="v2.10"$/;"	v
+loaded_matchit	matchit.vim	/^let loaded_matchit = 1$/;"	v
+loaded_mru	mru.vim	/^let loaded_mru=1$/;"	v
+loaded_taglist	taglist.vim	/^            let loaded_taglist = 'no'$/;"	v
+loaded_taglist	taglist.vim	/^        let loaded_taglist = 'no'$/;"	v
+loaded_taglist	taglist.vim	/^    let loaded_taglist = 'fast_load_done'$/;"	v
+loaded_taglist	taglist.vim	/^let loaded_taglist = 'available'$/;"	v
+loaded_yankring	yankring.vim	/^let loaded_yankring = 90$/;"	v
+make_cscope_out	cscope_helper.vim	/^function! s:make_cscope_out(is_update)$/;"	f
+make_ctags	ctags_helper.vim	/^function! s:make_ctags()$/;"	f
+map_key	cscope_helper.vim	/^function! s:map_key()$/;"	f
+menuBufEnter	rails.vim	/^function! s:menuBufEnter()$/;"	f
+menuBufLeave	rails.vim	/^function! s:menuBufLeave()$/;"	f
+menuRoot	yankring.vim	/^        let menuRoot = '&Plugin.&YankRing'$/;"	v
+menuRoot	yankring.vim	/^        let menuRoot = '&YankRing'$/;"	v
+menuRoot	yankring.vim	/^        let menuRoot = 'YankRing'$/;"	v
+menucmd	rails.vim	/^function! s:menucmd(priority)$/;"	f
+menuprompt	rails.vim	/^function! s:menuprompt(vimcmd,prompt)$/;"	f
+open_terminal	open_terminal.vim	/^function! s:open_terminal()$/;"	f
+projec_init	etc_helper.vim	/^function! s:projec_init()$/;"	f
+railsPluginDetect	rails.vim	/^augroup railsPluginDetect$/;"	a
+railsPluginMenu	rails.vim	/^augroup railsPluginMenu$/;"	a
+refresh_cscope	cscope_helper.vim	/^function! s:refresh_cscope()$/;"	f
+refresh_ctags	ctags_helper.vim	/^function! s:refresh_ctags()$/;"	f
+s:FeedMapping	autocomplpop.vim	/^let s:FeedMapping = { 'keys' :  [] }$/;"	v
+s:OptionManager	autocomplpop.vim	/^let s:OptionManager = { 'originals' : {} }$/;"	v
+s:PopupFeeder	autocomplpop.vim	/^let s:PopupFeeder = { 'behavs' : [], 'lock_count' : 0 }$/;"	v
+s:Tlist_Skip_Refresh	taglist.vim	/^let s:Tlist_Skip_Refresh = 0$/;"	v
+s:cpo_save	mru.vim	/^let s:cpo_save = &cpo$/;"	v
+s:cpo_save	taglist.vim	/^let s:cpo_save = &cpo$/;"	v
+s:csout_dir	cscope_helper.vim	/^let s:csout_dir = ""$/;"	v
+s:esc_filename_chars	mru.vim	/^let s:esc_filename_chars = ' *?[{`$%#"|!<>();&' . "'\\t\\n"$/;"	v
+s:last_mps	matchit.vim	/^let s:last_mps = ""$/;"	v
+s:last_words	matchit.vim	/^let s:last_words = ":"$/;"	v
+s:menu_char_prefix	taglist.vim	/^let s:menu_char_prefix =$/;"	v
+s:mru_list_locked	mru.vim	/^let s:mru_list_locked = 0$/;"	v
+s:notslash	matchit.vim	/^let s:notslash = '\\\\\\@<!\\%(\\\\\\\\\\)*'$/;"	v
+s:save_cpo	matchit.vim	/^let s:save_cpo = &cpo$/;"	v
+s:seen	sudo.vim	/^let s:seen=1$/;"	v
+s:tags_dir	ctags_helper.vim	/^let s:tags_dir = ""$/;"	v
+s:tlist_app_name	taglist.vim	/^let s:tlist_app_name = "none"$/;"	v
+s:tlist_brief_help	taglist.vim	/^let s:tlist_brief_help = 1$/;"	v
+s:tlist_cur_file_idx	taglist.vim	/^let s:tlist_cur_file_idx = -1$/;"	v
+s:tlist_debug	taglist.vim	/^let s:tlist_debug = 0$/;"	v
+s:tlist_debug_file	taglist.vim	/^let s:tlist_debug_file = ''$/;"	v
+s:tlist_def_asm_settings	taglist.vim	/^let s:tlist_def_asm_settings = 'asm;d:define;l:label;m:macro;t:type'$/;"	v
+s:tlist_def_aspperl_settings	taglist.vim	/^let s:tlist_def_aspperl_settings = 'asp;f:function;s:sub;v:variable'$/;"	v
+s:tlist_def_aspvbs_settings	taglist.vim	/^let s:tlist_def_aspvbs_settings = 'asp;f:function;s:sub;v:variable'$/;"	v
+s:tlist_def_awk_settings	taglist.vim	/^let s:tlist_def_awk_settings = 'awk;f:function'$/;"	v
+s:tlist_def_beta_settings	taglist.vim	/^let s:tlist_def_beta_settings = 'beta;f:fragment;s:slot;v:pattern'$/;"	v
+s:tlist_def_c_settings	taglist.vim	/^let s:tlist_def_c_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;' .$/;"	v
+s:tlist_def_cobol_settings	taglist.vim	/^let s:tlist_def_cobol_settings = 'cobol;d:data;f:file;g:group;p:paragraph;' .$/;"	v
+s:tlist_def_cpp_settings	taglist.vim	/^let s:tlist_def_cpp_settings = 'c++;n:namespace;v:variable;d:macro;t:typedef;' .$/;"	v
+s:tlist_def_cs_settings	taglist.vim	/^let s:tlist_def_cs_settings = 'c#;d:macro;t:typedef;n:namespace;c:class;' .$/;"	v
+s:tlist_def_csh_settings	taglist.vim	/^let s:tlist_def_csh_settings = 'sh;f:function'$/;"	v
+s:tlist_def_eiffel_settings	taglist.vim	/^let s:tlist_def_eiffel_settings = 'eiffel;c:class;f:feature'$/;"	v
+s:tlist_def_erlang_settings	taglist.vim	/^let s:tlist_def_erlang_settings = 'erlang;d:macro;r:record;m:module;f:function'$/;"	v
+s:tlist_def_expect_settings	taglist.vim	/^let s:tlist_def_expect_settings = 'tcl;c:class;f:method;p:procedure'$/;"	v
+s:tlist_def_fortran_settings	taglist.vim	/^let s:tlist_def_fortran_settings = 'fortran;p:program;b:block data;' .$/;"	v
+s:tlist_def_html_settings	taglist.vim	/^let s:tlist_def_html_settings = 'html;a:anchor;f:javascript function'$/;"	v
+s:tlist_def_java_settings	taglist.vim	/^let s:tlist_def_java_settings = 'java;p:package;c:class;i:interface;' .$/;"	v
+s:tlist_def_javascript_settings	taglist.vim	/^let s:tlist_def_javascript_settings = 'javascript;f:function'$/;"	v
+s:tlist_def_lisp_settings	taglist.vim	/^let s:tlist_def_lisp_settings = 'lisp;f:function'$/;"	v
+s:tlist_def_lua_settings	taglist.vim	/^let s:tlist_def_lua_settings = 'lua;f:function'$/;"	v
+s:tlist_def_make_settings	taglist.vim	/^let s:tlist_def_make_settings = 'make;m:macro'$/;"	v
+s:tlist_def_pascal_settings	taglist.vim	/^let s:tlist_def_pascal_settings = 'pascal;f:function;p:procedure'$/;"	v
+s:tlist_def_perl_settings	taglist.vim	/^let s:tlist_def_perl_settings = 'perl;c:constant;l:label;p:package;s:subroutine'$/;"	v
+s:tlist_def_php_settings	taglist.vim	/^let s:tlist_def_php_settings = 'php;c:class;d:constant;v:variable;f:function'$/;"	v
+s:tlist_def_python_settings	taglist.vim	/^let s:tlist_def_python_settings = 'python;c:class;m:member;f:function'$/;"	v
+s:tlist_def_rexx_settings	taglist.vim	/^let s:tlist_def_rexx_settings = 'rexx;s:subroutine'$/;"	v
+s:tlist_def_ruby_settings	taglist.vim	/^let s:tlist_def_ruby_settings = 'ruby;c:class;f:method;F:function;' .$/;"	v
+s:tlist_def_scheme_settings	taglist.vim	/^let s:tlist_def_scheme_settings = 'scheme;s:set;f:function'$/;"	v
+s:tlist_def_sh_settings	taglist.vim	/^let s:tlist_def_sh_settings = 'sh;f:function'$/;"	v
+s:tlist_def_slang_settings	taglist.vim	/^let s:tlist_def_slang_settings = 'slang;n:namespace;f:function'$/;"	v
+s:tlist_def_sml_settings	taglist.vim	/^let s:tlist_def_sml_settings = 'sml;e:exception;c:functor;s:signature;' .$/;"	v
+s:tlist_def_sql_settings	taglist.vim	/^let s:tlist_def_sql_settings = 'sql;c:cursor;F:field;P:package;r:record;' .$/;"	v
+s:tlist_def_tcl_settings	taglist.vim	/^let s:tlist_def_tcl_settings = 'tcl;c:class;f:method;m:method;p:procedure'$/;"	v
+s:tlist_def_vera_settings	taglist.vim	/^let s:tlist_def_vera_settings = 'vera;c:class;d:macro;e:enumerator;' .$/;"	v
+s:tlist_def_verilog_settings	taglist.vim	/^let s:tlist_def_verilog_settings = 'verilog;m:module;c:constant;P:parameter;' .$/;"	v
+s:tlist_def_vim_settings	taglist.vim	/^let s:tlist_def_vim_settings = 'vim;a:autocmds;v:variable;f:function'$/;"	v
+s:tlist_def_yacc_settings	taglist.vim	/^let s:tlist_def_yacc_settings = 'yacc;l:label'$/;"	v
+s:tlist_def_zsh_settings	taglist.vim	/^let s:tlist_def_zsh_settings = 'sh;f:function'$/;"	v
+s:tlist_file_count	taglist.vim	/^let s:tlist_file_count = 0$/;"	v
+s:tlist_file_lnum_idx_cache	taglist.vim	/^let s:tlist_file_lnum_idx_cache = -1$/;"	v
+s:tlist_file_name_idx_cache	taglist.vim	/^let s:tlist_file_name_idx_cache = -1$/;"	v
+s:tlist_file_names	taglist.vim	/^let s:tlist_file_names=''$/;"	v
+s:tlist_ftype_count	taglist.vim	/^let s:tlist_ftype_count = 0$/;"	v
+s:tlist_menu_empty	taglist.vim	/^let s:tlist_menu_empty = 1$/;"	v
+s:tlist_msg	taglist.vim	/^    let s:tlist_msg = ''$/;"	v
+s:tlist_removed_flist	taglist.vim	/^let s:tlist_removed_flist = ""$/;"	v
+s:tlist_sid	taglist.vim	/^    let s:tlist_sid = substitute(maparg('<SID>xx'), '<SNR>\\(\\d\\+_\\)xx$',$/;"	v
+s:tlist_win_maximized	taglist.vim	/^let s:tlist_win_maximized = 0$/;"	v
+s:tlist_winsize_chgd	taglist.vim	/^let s:tlist_winsize_chgd = -1$/;"	v
+s:yr_buffer_id	yankring.vim	/^let s:yr_buffer_id         = -1$/;"	v
+s:yr_buffer_last	yankring.vim	/^let s:yr_buffer_last       = -1$/;"	v
+s:yr_buffer_last_winnr	yankring.vim	/^let s:yr_buffer_last_winnr = -1$/;"	v
+s:yr_buffer_name	yankring.vim	/^let s:yr_buffer_name       = '__YankRing__'$/;"	v
+s:yr_has_voperator	yankring.vim	/^    let s:yr_has_voperator = 1$/;"	v
+s:yr_has_voperator	yankring.vim	/^let s:yr_has_voperator     = 0$/;"	v
+s:yr_history_file_v1	yankring.vim	/^let s:yr_history_file_v1   = $/;"	v
+s:yr_history_file_v2	yankring.vim	/^let s:yr_history_file_v2   = $/;"	v
+s:yr_history_last_upd	yankring.vim	/^let s:yr_history_last_upd  = 0$/;"	v
+s:yr_history_v1_nl	yankring.vim	/^let s:yr_history_v1_nl     = '@@@'$/;"	v
+s:yr_history_v1_nl_pat	yankring.vim	/^let s:yr_history_v1_nl_pat = '\\%(\\\\\\)\\@<!@@@'$/;"	v
+s:yr_history_v2_nl	yankring.vim	/^let s:yr_history_v2_nl     = "\\2" " Use double quotes for a special character$/;"	v
+s:yr_history_v2_nl_pat	yankring.vim	/^let s:yr_history_v2_nl_pat = "\\2"$/;"	v
+s:yr_history_version	yankring.vim	/^let s:yr_history_version   = 'v2'$/;"	v
+s:yr_maps_created	yankring.vim	/^let s:yr_maps_created      = 0$/;"	v
+s:yr_maps_created_zap	yankring.vim	/^let s:yr_maps_created_zap  = 0$/;"	v
+s:yr_remove_omap_dot	yankring.vim	/^let s:yr_remove_omap_dot   = 0$/;"	v
+s:yr_search	yankring.vim	/^let s:yr_search            = ''$/;"	v
+s:yr_winsize_chgd	yankring.vim	/^let s:yr_winsize_chgd      = 0$/;"	v
+set_cscope	cscope_helper.vim	/^function! s:set_cscope()$/;"	f
+set_tags_dir	ctags_helper.vim	/^function! s:set_tags_dir()$/;"	f
+sub	rails.vim	/^function! s:sub(str,pat,rep)$/;"	f
+update_cscope	cscope_helper.vim	/^function! s:update_cscope()$/;"	f
