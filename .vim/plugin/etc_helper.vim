@@ -16,5 +16,11 @@ function! s:projec_init()
   se cst
   CTInit
 endfunction
-command! -nargs=0 -bar CSProject call s:projec_init()
+function! s:projec_refresh()
+  CSRefresh
+  se cst
+  CTRefresh
+endfunction
+command! -nargs=0 -bar ProjectInit call s:projec_init()
+command! -nargs=0 -bar ProjectRefresh call s:projec_refresh()
 
