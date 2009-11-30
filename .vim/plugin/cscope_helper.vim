@@ -49,10 +49,11 @@ function! s:csout_path()
 endfunction
 
 function! s:make_cscope_out(is_update)
-    let not_names = split("tags cscope.out cscope.files *.jar")
+    let not_names = split("tags cscope.out cscope.files *.jar *.png *.gif *.jpg *.bmp")
     let not_name = "-not -name \"" . join(not_names, "\" -not -name \"") . "\""
-    let csout_cmd = "find " . s:csout_dir . " -type f -not -path \"*/.*\" " . not_name ." > cscope.files && cscope -b "
+    let csout_cmd = "find " . s:csout_dir . " -type f -not -path \"*/.*\" " . not_name ." -printf \"\\\"\\%p\\\"\\n\" > cscope.files && cscope -b "
     if a:is_update
+        echo csout_cmd
         call system(csout_cmd . "-U")
     else
         execute("!" . csout_cmd)
