@@ -48,8 +48,8 @@ set ts=4 sts=4 sw=4 et ai bs=2
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 
 filetype plugin indent on
-se backup
-se backupdir=$HOME/$MYVIMDIR/backup
+se nobackup
+"se backupdir=$HOME/$MYVIMDIR/backup
 
 "tags
 set tags=./tags,./../tags,./../../tags,./../../../tags,./*/tags
