@@ -71,6 +71,7 @@ nnoremap <silent> <F2> :YRShow<CR>
                                            "for taglist plugin
 nnoremap <silent> <F8> :TlistToggle<CR> 
 nnoremap <silent> <F9> :OpenTerminal<CR>
+nnoremap <silent> <F10> :OpenShell<CR><CR>
 let g:CS_key = 1
 if has("gui_running")
 nnoremap <silent> <C-s>   <ESC>:w<CR>

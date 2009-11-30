@@ -12,7 +12,7 @@ endfunction
 
 function! s:open_shell()
     if has("mac")
-
+        !open .
     elseif has("gui_gnome")
         call system("nautilus . &") 
     elseif has("gui_win32")
