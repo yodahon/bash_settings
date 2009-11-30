@@ -41,6 +41,13 @@
 " a tag like: <  test  nowrap  testatt=foo   >
 " should be fixed to: <test nowrap="nowrap" testatt="foo"></test>
 
+"add by neocoin for ts, st ,sw                   {{{1
+se tabstop=2
+se softtabstop=2
+se sw=2
+se expandtab
+"                                                1}}}
+
 "==============================================================================
 
 " Only do this when not done yet for this buffer
