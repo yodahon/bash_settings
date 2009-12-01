@@ -1,9 +1,9 @@
 This is my bash settings for sharing various systems.
 
 make_link.rb
-  - link generate for bash shell in linux and windows
+  - link generate for bash shell in linux and windows(cygwin run as administrator)
 
-.bashrc for bashrc
+.bashrc for bash shell settings
   - ls alias
 
 .ctags for ctags
