@@ -30,6 +30,8 @@ if has("gui_running")
         set guifont=DejaVu_Sans_Mono:h12:cANSI
     elseif has("gui_gtk")
         set guifont=DejaVu\ Sans\ Mono\ 12
+    elseif has("gui_macvim")
+        set guifont=DejaVu\ Sans\ Mono:h14.00
     endif
 else
     colorscheme default
@@ -48,8 +50,8 @@ set ts=4 sts=4 sw=4 et ai bs=2
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 
 filetype plugin indent on
-se nobackup
-"se backupdir=$HOME/$MYVIMDIR/backup
+se backup
+se backupdir=$HOME/$MYVIMDIR/backups
 
 "tags
 set tags=./tags,./../tags,./../../tags,./../../../tags,./*/tags
