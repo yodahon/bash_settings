@@ -109,7 +109,7 @@ command! -nargs=0 -bar CSSet call s:set_cscope()
 command! -nargs=0 -bar CSRefresh call s:refresh_cscope()
 command! -nargs=0 -bar CSKey call s:map_key()
 
-if !exists(g:CS_key)
+if !exists('g:CS_key')
     let g:CS_key = 1
 endif
 
