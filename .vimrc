@@ -16,6 +16,7 @@ se nowrap
 se nu
 se cursorline
 se cursorcolumn
+se paste
 
 
 "color
