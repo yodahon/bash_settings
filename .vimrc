@@ -128,3 +128,6 @@ let g:yankring_replace_n_pkey = ""
 let g:yankring_replace_n_nkey = ""
 
 "http://www.vi-improved.org/color_sampler_pack/
+"
+
+let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
