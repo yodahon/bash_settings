@@ -1,5 +1,27 @@
 function! s:open_terminal()
     if has("mac")
+"fill me with below hint
+"--
+"on process_item(this_item)
+    "set the_path to POSIX path of this_item
+    "repeat until the_path ends with "/"
+        "set the_path to text 1 thru -2 of the_path
+    "end repeat
+    
+    "set cmd to "cd " & quoted form of the_path & " && echo $'\\ec'"
+    
+    "tell application "System Events" to set terminalIsRunning to exists application process "Terminal"
+    
+    "tell application "Terminal"
+        "activate
+        "if terminalIsRunning is true then
+            "do script with command cmd
+        "else
+            "do script with command cmd in window 1
+        "end if
+    "end tell
+    
+"end process_item
 
     elseif has("gui_gnome")
         call system("gnome-terminal &") 
