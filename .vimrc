@@ -67,7 +67,8 @@ se modeline
 "
 
 "map
-map      <silent> <F1> <ESC>:e %:p:h<CR>
+"map      <silent> <F1> <ESC>:e %:p:h<CR>
+map      <silent> - <ESC>:e %:p:h<CR>
 "nnoremap <silent> <F2> :FufBuffer<CR>
                                            "for YankRing plugin
 nnoremap <silent> <F2> :YRShow<CR>    
