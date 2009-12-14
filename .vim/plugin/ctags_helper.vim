@@ -1,43 +1,70 @@
 
-if !exists('g:tags_lib')
-  let g:tags_lib_dirs = ""
-endif
-
+" tags option helper {{{1
 let g:ctags_default_files = split("./tags,./../tags,./../../tags,./../../../tags,./*/tags",',')
-let s:tags_lib = ""
-let s:project_root = ""
 
-" project management {{{1
-function! s:add_tags_dir()
+function! s:tags_dict()
+  let l:tags_dict = {}
+  for tag in split(&tags, ',')
+    let l:tags_dict[tag] = "dummy"
+  endfor
+  return l:tags_dict
 endfunction
 
-function! s:make_ctags()
-  let tags_cmd = "ctags -r "
-  execute("!" . tags_cmd . s:tags_dir)
+function! s:set_tags(tags_dict)
+  for file in g:ctags_default_files
+    let a:tags_dict[file] = "dummy"
+  endfor
+
+  execute "set tags=" . join(sort(keys(a:tags_dict)), ',')
+endfunction
+" }}}1
+
+
+" Project management {{{1
+let s:project_dir = ""
+
+function! s:make_ctags(project_dir)
+  let tags_cmd = "!ctags -R "
+  let current_dir = getcwd()
+  execute("chdir " . a:project_dir)
+  execute(tags_cmd)
+  execute("chdir " . current_dir)
+  unlet current_dir
+
   if !has("gui_running")
     echo tags_cmd
   endif
   unlet tags_cmd
-endfunction    
+endfunction
 
-function! s:set_tags_dir()
-  if filereadable("tags") || filereadable("tags")
-    let s:project_root = s:tags_dir
-    let cmd ="set tags=" . s:tags_dir . "/tags,./tags,./../tags,./../../tags,./../../../tags,./*/tags" 
-    execute(cmd)
-    echo(cmd)
+function! s:set_tags_dir(project_dir)
+  if filereadable(a:project_dir . "/tags")
+    let l:tags_dict = s:tags_dict()
+
+    echo "remove " . s:project_dir
+    if has_key(l:tags_dict, s:project_dir)
+      call remove(l:tags_dict, s:project_dir . "/tags")
+    endif
+    let l:tags_dict[a:project_dir . "/tags"] = "dummy"
+    call s:set_tags(l:tags_dict)
+
+    let s:project_dir = a:project_dir
   endif
 endfunction
 
 function! s:init_ctags()
-  let s:tags_dir = getcwd() 
-  call s:make_ctags()
-  call s:set_tags_dir()
+  call s:make_ctags(getcwd())
+  call s:set_tags_dir(getcwd())
+
+  let l:tags_dict = s:tags_dict()
+  let l:tags = sort(keys(l:tags_dict))
+  echo "tags options"
+  echo "    " . join(l:tags,"\n    ")
 endfunction
 
 function! s:refresh_ctags()
   let current_dir = getcwd()
-  execute("chdir " . s:tags_dir)
+  execute("chdir " . s:project_dir)
   call s:make_ctags()
   echo "refreshed tags"
   execute("chdir " . current_dir)
@@ -50,8 +77,8 @@ endfunction
 "
   " let g:ctags_library_dicts = 
   "   {
-  "     filetype1 : {dir1 : "dummy", dir2: "dummy" }, 
-  "     filetype2 : {dir1 : "dummy", dir2: "dummy" } 
+  "     filetype1 : {file1 : "dummy", file2: "dummy" }, 
+  "     filetype2 : {file1 : "dummy", file: "dummy" } 
   "   } 
 let g:ctags_library_dicts = {}
 let g:ctags_library_applied = {}
@@ -68,6 +95,12 @@ endfunction
 
 call s:load_info_file()
 
+function! s:save_info_file()
+  if filereadable(expand(g:ctags_info_file))
+    call writefile([string(g:ctags_library_dicts)],expand(g:ctags_info_file))
+  endif
+endfunction
+
 function! s:show_library()
   let l:count = 0
   for filetype in sort(keys(g:ctags_library_dicts))
@@ -76,33 +109,41 @@ function! s:show_library()
       let l:count += 1
     endfor
   endfor
-
 endfunction
 
 function! s:remove_library(num)
+  let l:filetype = ""
   let l:count = 0
   for filetype in sort(keys(g:ctags_library_dicts))
     for dir in sort(keys(g:ctags_library_dicts[filetype]))
       if l:count == a:num
         call remove(g:ctags_library_dicts[filetype],dir) 
+        let l:filetype = filetype
         break
       endif
       let l:count += 1
     endfor
   endfor
+  if l:filetype != ""
+    call remove(g:ctags_library_applied, filetype)
+    call s:apply_library()
+  endif
+
+  call s:save_info_file()
 
   call s:show_library()
 endfunction
+
 
 function! s:add_library(dir, filetype)
   let l:dirs ={}
   if !has_key(g:ctags_library_dicts, a:filetype)
     let g:ctags_library_dicts[a:filetype] = {}  
   endif
-  let l:dir_dicts = g:ctags_library_dicts[a:filetype]
+  let l:lib_dicts = g:ctags_library_dicts[a:filetype]
 
   if filereadable(a:dir . "/tags")
-    let l:dir_dicts[a:dir . "/tags"]="dummy"
+    let l:lib_dicts[a:dir . "/tags"]="dummy"
   else
     let msg = "Din't find tags file. \nDo you make tags with '!ctags -R'? (y/n): "
     if input(msg) == "y"
@@ -110,43 +151,14 @@ function! s:add_library(dir, filetype)
       execute("chdir " . a:dir)
       execute("!ctags -R")
       execute("chdir " . old)
-      let l:dir_dicts[a:dir . "/tags"]="dummy"
+      let l:lib_dicts[a:dir . "/tags"]="dummy"
     endif
   endif
 
-  "write file code
-  if filereadable(expand(g:ctags_info_file))
-    call writefile([string(g:ctags_library_dicts)],expand(g:ctags_info_file))
-  endif
-
-  
-  "let dirs = split(g:tags_lib_dirs,",")
-  "call filter(dirs, 'v:val != s:cwd')
-  "call add(dirs, s:cwd)
-  "let g:tags_lib_dirs = join(dirs, ',')
-  "unlet s:cwd
-
+  call s:save_info_file()
   call s:show_library()
 endfunction
 
-
-function! s:tags_dict()
-  let l:tags_dict = {}
-  for tag in split(&tags, ',')
-    let l:tags_dict[tag] = "dummy"
-  endfor
-  return l:tags_dict
-endfunction
-
-function! s:set_tags(tags_dict)
-  for file in g:ctags_default_files
-    let a:tags_dict[file] = "dummy"
-  endfor
-
-  "apply tags
-  let l:tags = join(sort(keys(a:tags_dict)), ',')
-  execute "set tags=" . l:tags
-endfunction
 
 function! s:apply_library(...)
   let l:filetypes = {"all":"dummy"}
@@ -175,7 +187,6 @@ function! s:apply_library(...)
 
   call s:set_tags(l:tags_dict)
 endfunction
-
 
 
 function! s:manage_library(...) 
@@ -208,8 +219,9 @@ endfunction
 
 " define command {{{1
 command! -nargs=0 -bar CTInit call s:init_ctags()
-command! -nargs=0 -bar CTSet call s:set_tags_dir()
+command! -nargs=0 -bar CTSet call s:set_tags_dir(getcw())
 command! -nargs=0 -bar CTRefresh call s:refresh_ctags()
 command! -nargs=* -bar CTLibrary call s:manage_library(<f-args>)
 " }}}1
+
 " vim: set fdm=marker:
