@@ -53,8 +53,20 @@ endfunction
   "     filetype1 : {dir1 : "dummy", dir2: "dummy" }, 
   "     filetype2 : {dir1 : "dummy", dir2: "dummy" } 
   "   } 
-"let g:ctags_library_dicts = {}
-"let g:ctags_library_applied = {}
+let g:ctags_library_dicts = {}
+let g:ctags_library_applied = {}
+let g:ctags_info_file = expand("~/.vim.ctag_helper")
+
+function! s:load_info_file()
+  if filereadable(g:ctags_info_file)
+    let lines = readfile(g:ctags_info_file)
+    if len(lines) > 0
+      execute("let g:ctags_library_dicts = " . lines[0])
+    endif
+  endif
+endfunction
+
+call s:load_info_file()
 
 function! s:show_library()
   let l:count = 0
@@ -89,17 +101,23 @@ function! s:add_library(dir, filetype)
   endif
   let l:dir_dicts = g:ctags_library_dicts[a:filetype]
 
-
-
-
-
-
-
-  let l:dir_dicts[a:dir]="dummy"
-
-  
+  if filereadable(a:dir . "/tags")
+    let l:dir_dicts[a:dir . "/tags"]="dummy"
+  else
+    let msg = "Din't find tags file. \nDo you make tags with '!ctags -R'? (y/n): "
+    if input(msg) == "y"
+      let old = getcwd()
+      execute("chdir " . a:dir)
+      execute("!ctags -R")
+      execute("chdir " . old)
+      let l:dir_dicts[a:dir . "/tags"]="dummy"
+    endif
+  endif
 
   "write file code
+  if filereadable(expand(g:ctags_info_file))
+    call writefile([string(g:ctags_library_dicts)],expand(g:ctags_info_file))
+  endif
 
   
   "let dirs = split(g:tags_lib_dirs,",")
