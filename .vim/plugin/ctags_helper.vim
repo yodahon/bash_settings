@@ -1,18 +1,25 @@
 
+
+" Simple log {{{1
+function! s:log(msg)
+  execute("!echo \"" . substitute(a:msg, '"', '\\"', "g") . " \" >> ~/temp/vim.log")
+endfunction
+" }}}1
+
 " tags option helper {{{1
 let g:ctags_default_files = split("./tags,./../tags,./../../tags,./../../../tags,./*/tags",',')
 
 function! s:tags_dict()
   let l:tags_dict = {}
   for tag in split(&tags, ',')
-    let l:tags_dict[tag] = "dummy"
+    let l:tags_dict[tag] = 1
   endfor
   return l:tags_dict
 endfunction
 
 function! s:set_tags(tags_dict)
   for file in g:ctags_default_files
-    let a:tags_dict[file] = "dummy"
+    let a:tags_dict[file] = 1
   endfor
 
   execute "set tags=" . join(sort(keys(a:tags_dict)), ',')
@@ -37,14 +44,13 @@ function! s:make_ctags(project_dir)
 endfunction
 
 function! s:set_tags_dir(project_dir)
-  if filereadable(a:project_dir . "/tags")
-    let l:tags_dict = s:tags_dict()
+  let l:project_tag = a:project_dir . "/tags"
+  let l:old_project_tag = s:project_dir . "/tags"
 
-    echo "remove " . s:project_dir
-    if has_key(l:tags_dict, s:project_dir)
-      call remove(l:tags_dict, s:project_dir . "/tags")
-    endif
-    let l:tags_dict[a:project_dir . "/tags"] = "dummy"
+  if filereadable(l:project_tag)
+    let l:tags_dict = s:tags_dict()
+    call filter(l:tags_dict, "v:key != l:old_project_tag")
+    let l:tags_dict[l:project_tag] = 1
     call s:set_tags(l:tags_dict)
 
     let s:project_dir = a:project_dir
@@ -75,8 +81,8 @@ endfunction
 "
   " let g:ctags_library_dicts = 
   "   {
-  "     filetype1 : {file1 : "dummy", file2: "dummy" }, 
-  "     filetype2 : {file1 : "dummy", file: "dummy" } 
+  "     filetype1 : {file1 :1, file2: 1}, 
+  "     filetype2 : {file1 :1, file: 1} 
   "   } 
 let g:ctags_library_dicts = {}
 let g:ctags_library_applied = {}
@@ -107,23 +113,68 @@ function! s:show_library()
       let l:count += 1
     endfor
   endfor
+
+  echo (" applied \n    " . string(g:ctags_library_applied))
+ 
+  let l:tags_dict = s:tags_dict()
+  let l:tags = sort(keys(l:tags_dict))
+  echo "tags options"
+  echo "    " . join(l:tags,"\n    ")
+endfunction
+
+
+function! s:apply_library(...)
+  let l:filetypes = {"all":1}
+  windo let l:filetypes[&filetype]=1
+
+  let l:tags_dict = s:tags_dict()
+
+  for filetype in keys(l:filetypes)
+    if has_key(g:ctags_library_applied, filetype)
+      continue
+    endif
+    let g:ctags_library_applied[filetype] =1
+
+    for dir in keys(get(g:ctags_library_dicts, filetype, {}))
+      let l:tags_dict[dir] =1
+    endfor
+  endfor
+
+  if a:0 == 1 && type(a:1) == 1
+    let l:filetype = a:1 
+    for dir in keys(get(g:ctags_library_dicts, filetype, {}))
+      call remove(l:tags_dict, dir)
+    endfor
+    call remove(g:ctags_library_applied, filetype)
+  endif
+
+  call s:set_tags(l:tags_dict)
 endfunction
 
 function! s:remove_library(num)
   let l:filetype = ""
   let l:count = 0
+  let l:removed_tag_file = ""
   for filetype in sort(keys(g:ctags_library_dicts))
-    for dir in sort(keys(g:ctags_library_dicts[filetype]))
+    for tag_file in sort(keys(g:ctags_library_dicts[filetype]))
       if l:count == a:num
-        call remove(g:ctags_library_dicts[filetype],dir) 
+        let l:removed_tag_file = tag_file
+        call remove(g:ctags_library_dicts[filetype],tag_file) 
         let l:filetype = filetype
         break
       endif
       let l:count += 1
     endfor
   endfor
+
+  "remove tags
+  let l:tags_dict = s:tags_dict()
+  call filter(l:tags_dict, "v:key != l:removed_tag_file")
+  call s:set_tags(l:tags_dict)
+
+  "remove applied
   if l:filetype != ""
-    call remove(g:ctags_library_applied, filetype)
+    call filter(g:ctags_library_applied, "v:key != filetype")
     call s:apply_library()
   endif
 
@@ -141,7 +192,7 @@ function! s:add_library(dir, filetype)
   let l:lib_dicts = g:ctags_library_dicts[a:filetype]
 
   if filereadable(a:dir . "/tags")
-    let l:lib_dicts[a:dir . "/tags"]="dummy"
+    let l:lib_dicts[a:dir . "/tags"]=1
   else
     let msg = "Din't find tags file. \nDo you make tags with '!ctags -R'? (y/n): "
     if input(msg) == "y"
@@ -149,41 +200,14 @@ function! s:add_library(dir, filetype)
       execute("chdir " . a:dir)
       execute("!ctags -R")
       execute("chdir " . old)
-      let l:lib_dicts[a:dir . "/tags"]="dummy"
+      let l:lib_dicts[a:dir . "/tags"]=1
     endif
   endif
 
   call s:save_info_file()
+  let g:ctags_library_applied[filetype] = {}
+  call s:apply_library()
   call s:show_library()
-endfunction
-
-
-function! s:apply_library(...)
-  let l:filetypes = {"all":"dummy"}
-  windo let l:filetypes[&filetype]="dummy"
-
-  let l:tags_dict = s:tags_dict()
-
-  for filetype in keys(l:filetypes)
-    if has_key(g:ctags_library_applied, filetype)
-      continue
-    endif
-    let g:ctags_library_applied[filetype] = "dummy"
-
-    for dir in keys(get(g:ctags_library_dicts, filetype, {}))
-      let l:tags_dict[dir] = "dummy"
-    endfor
-  endfor
-
-  if a:0 == 1 && type(a:1) == 1
-    let l:filetype = a:1 
-    for dir in keys(get(g:ctags_library_dicts, filetype, {}))
-      call remove(l:tags_dict, dir)
-    endfor
-    call remove(g:ctags_library_applied, filetype)
-  endif
-
-  call s:set_tags(l:tags_dict)
 endfunction
 
 
@@ -220,6 +244,41 @@ command! -nargs=0 -bar CTInit call s:init_ctags()
 command! -nargs=0 -bar CTSet call s:set_tags_dir(getcw())
 command! -nargs=0 -bar CTRefresh call s:refresh_ctags()
 command! -nargs=* -bar CTLibrary call s:manage_library(<f-args>)
+" }}}1
+
+" Event bind {{{1
+function! s:test_library(...)
+  let l:filetypes = {"all":1}
+  windo let l:filetypes[&filetype]=1
+  echo l:filetypes
+  call confirm("Test" . &filetype)
+endfunction
+
+function! s:onBufWinLeave_for_library()
+  let l:filetypes = {"all": 1}
+  windo let l:filetypes[&filetype] = 0
+  windo let l:filetypes[&filetype] += 1
+  let l:filetypes[&filetype] -= 1
+
+  if has_key(g:ctags_library_applied,&filetype) && l:filetypes[&filetype] <= 0
+    call s:apply_library(&filetype)
+  endif
+
+endfunction
+
+function! s:onBufReadPost_for_library()
+  let l:filetypes = {"all": 1}
+  windo let l:filetypes[&filetype] = 0
+  windo let l:filetypes[&filetype] += 1
+
+  call s:apply_library()
+endfunction
+
+au! ctag_helper_group
+augroup ctag_helper_group
+autocmd ctag_helper_group BufReadPost * silent! call s:onBufReadPost_for_library()
+autocmd ctag_helper_group BufWinLeave * silent! call s:onBufWinLeave_for_library()
+
 " }}}1
 
 " vim: set fdm=marker:
