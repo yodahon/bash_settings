@@ -19,7 +19,6 @@ function! s:set_tags(tags_dict)
 endfunction
 " }}}1
 
-
 " Project management {{{1
 let s:project_dir = ""
 
@@ -72,8 +71,7 @@ function! s:refresh_ctags()
 endfunction
 " }}}1
 
-
-" library path management {{{1
+" Library management {{{1
 "
   " let g:ctags_library_dicts = 
   "   {
