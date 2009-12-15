@@ -282,8 +282,8 @@ function! s:onBufReadPost_for_library()
   call s:apply_library()
 endfunction
 
-au! ctag_helper_group
 augroup ctag_helper_group
+autocmd! ctag_helper_group
 autocmd ctag_helper_group BufWinEnter * silent! call s:onBufReadPost_for_library()
 autocmd ctag_helper_group BufWinLeave * silent! call s:onBufWinLeave_for_library()
 "autocmd ctag_helper_group BufEnter * silent! call s:log("BufEnter")
