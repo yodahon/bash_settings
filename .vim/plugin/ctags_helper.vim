@@ -109,15 +109,16 @@ function! s:save_info_file()
 endfunction
 
 function! s:show_library()
+  echo "library (index   filetype   tags)"
   let l:count = 0
   for filetype in sort(keys(g:ctags_library_dicts))
     for dir in sort(keys(g:ctags_library_dicts[filetype]))
-      echo l:count . "   " . filetype . "  " . dir
+      echo "    " . l:count . "   " . filetype . "  " . dir
       let l:count += 1
     endfor
   endfor
 
-  echo (" applied \n    " . string(g:ctags_library_applied))
+  echo ("applied \n    " . string(sort(keys(g:ctags_library_applied))))
  
   let l:tags_dict = s:tags_dict()
   let l:tags = sort(keys(l:tags_dict))
@@ -126,30 +127,28 @@ function! s:show_library()
 endfunction
 
 
-function! s:apply_library(...)
-  let l:filetypes = {"all":1}
-  windo let l:filetypes[&filetype]=1
-
+function! s:apply_library(filetype)
   let l:tags_dict = s:tags_dict()
 
-  for filetype in keys(l:filetypes)
-    if has_key(g:ctags_library_applied, filetype)
-      continue
-    endif
-    let g:ctags_library_applied[filetype] =1
+  if has_key(g:ctags_library_applied, a:filetype)
+    return
+  endif
+  let g:ctags_library_applied[a:filetype] =1
 
-    for dir in keys(get(g:ctags_library_dicts, filetype, {}))
-      let l:tags_dict[dir] =1
-    endfor
+  for dir in keys(get(g:ctags_library_dicts, a:filetype, {}))
+    let l:tags_dict[dir] = 1
   endfor
 
-  if a:0 == 1 && type(a:1) == 1
-    let l:filetype = a:1 
-    for dir in keys(get(g:ctags_library_dicts, filetype, {}))
-      call remove(l:tags_dict, dir)
-    endfor
-    call remove(g:ctags_library_applied, filetype)
-  endif
+  call s:set_tags(l:tags_dict)
+endfunction
+
+function! s:unapply_library(filetype)
+  let l:tags_dict = s:tags_dict()
+
+  call filter(g:ctags_library_applied, "v:key != a:filetype")
+  for dir in keys(get(g:ctags_library_dicts, a:filetype, {}))
+    call filter(l:tags_dict, "v:key != dir")
+  endfor
 
   call s:set_tags(l:tags_dict)
 endfunction
@@ -175,10 +174,10 @@ function! s:remove_library(num)
   call filter(l:tags_dict, "v:key != l:removed_tag_file")
   call s:set_tags(l:tags_dict)
 
-  "remove applied
-  if l:filetype != ""
+  "unapply 
+  if !empty(l:filetype)
     call filter(g:ctags_library_applied, "v:key != filetype")
-    call s:apply_library()
+    call s:apply_library(l:filetype)
   endif
 
   call s:save_info_file()
@@ -209,7 +208,6 @@ function! s:add_library(dir, filetype)
 
   call s:save_info_file()
   call filter(g:ctags_library_applied, "v:key != a:filetype")
-  call s:apply_library()
   call s:show_library()
 endfunction
 
@@ -217,13 +215,13 @@ endfunction
 function! s:manage_library(...) 
   if a:0 == 0
     echo "CTLibrary command"
-    echo "add   : add current or target director to library path.   (usage: add [dir] [filetype])"
-    echo "remove: remove library paths.     (usage: remove {n}|all"
-    echo "        {n} : number"
-    echo "        all : all library deleted"
-    echo "show  : show library paths"
+    echo "add     : add current or target director to library path.   (usage: add [dir] [filetype])"
+    echo "remove  : remove library paths.           (usage: remove {n}|all"
+    echo "          {n} : index"
+    echo "show    : show library paths"
+    echo "apply   : apply library by {filetype}.    (usage: apply {filetype})"
+    echo "unapply : unapply library by {filetype}.  (usage: apply {filetype})"
     echo "  "
-    call s:show_library()
   else
     if a:1 == "add"
       let l:dir = a:0 >= 1 ? getcwd() : a:2
@@ -231,14 +229,21 @@ function! s:manage_library(...)
       let l:filetype = a:0 == 3 ? a:3 : "all"
 
       call s:add_library(l:dir, l:filetype)
-      call s:apply_library()
+      if has_key(g:ctags_library_applied, l:filetype)
+        call s:unapply_library(l:filetype)
+        call s:apply_library(l:filetype)
+      endif
     elseif a:1 == "remove"
       call s:remove_library(str2nr(a:2))
-
     elseif a:1 == "show"
       call s:show_library()
+    elseif a:1 == "apply" && a:0 == 2
+      call s:apply_library(a:2)
+    elseif a:1 == "unapply" && a:0 == 2
+      call s:unapply_library(a:2)
     endif
   endif
+  call s:show_library()
 endfunction
 " }}}1
 
@@ -250,45 +255,13 @@ command! -nargs=* -bar CTLibrary call s:manage_library(<f-args>)
 " }}}1
 
 " Event bind {{{1
-function! s:test_library(...)
-  let l:filetypes = {"all":1}
-  windo let l:filetypes[&filetype]=1
-  echo l:filetypes
-  call confirm("Test" . &filetype)
-endfunction
-
-function! s:onBufWinLeave_for_library()
-  let l:filetypes = {"all": 1}
-  windo let l:filetypes[&filetype] = 0
-  windo let l:filetypes[&filetype] += 1
-  let l:filetypes[&filetype] -= 1
-
-  "exception
-  if has_key(l:filetypes, "fuf")
-    return
-  endif
-
-  if has_key(g:ctags_library_applied,&filetype) && l:filetypes[&filetype] <= 0
-    call s:apply_library(&filetype)
-  endif
-
-endfunction
-
-function! s:onBufReadPost_for_library()
-  let l:filetypes = {"all": 1}
-  windo let l:filetypes[&filetype] = 0
-  windo let l:filetypes[&filetype] += 1
-
-  call s:apply_library()
+function! s:onBufWinEnter_for_library()
+  call s:apply_library(&filetype)
 endfunction
 
 augroup ctag_helper_group
 autocmd! ctag_helper_group
-autocmd ctag_helper_group BufWinEnter * silent! call s:onBufReadPost_for_library()
-autocmd ctag_helper_group BufWinLeave * silent! call s:onBufWinLeave_for_library()
-"autocmd ctag_helper_group BufEnter * silent! call s:log("BufEnter")
-"autocmd ctag_helper_group BufLeave * silent! call s:log("BufLeave")
-"autocmd ctag_helper_group FileReadPre * silent! call s:log("FileRead")
+autocmd ctag_helper_group BufWinEnter * silent! call s:onBufWinEnter_for_library()
 
 " }}}1
 
