@@ -84,9 +84,11 @@ endfunction
   "     filetype1 : {file1 :1, file2: 1}, 
   "     filetype2 : {file1 :1, file: 1} 
   "   } 
-let g:ctags_library_dicts = {}
-let g:ctags_library_applied = {}
-let g:ctags_info_file = expand("~/.vim.ctag_helper")
+if !exists("g:ctags_library_dicts")
+  let g:ctags_library_dicts = {}
+  let g:ctags_library_applied = {}
+  let g:ctags_info_file = expand("~/.vim.ctag_helper")
+endif
 
 function! s:load_info_file()
   if filereadable(g:ctags_info_file)
@@ -205,7 +207,7 @@ function! s:add_library(dir, filetype)
   endif
 
   call s:save_info_file()
-  let g:ctags_library_applied[filetype] = {}
+  call filter(g:ctags_library_applied, "v:key != a:filetype")
   call s:apply_library()
   call s:show_library()
 endfunction
@@ -276,7 +278,7 @@ endfunction
 
 au! ctag_helper_group
 augroup ctag_helper_group
-autocmd ctag_helper_group BufReadPost * silent! call s:onBufReadPost_for_library()
+autocmd ctag_helper_group BufWinEnter * silent! call s:onBufReadPost_for_library()
 autocmd ctag_helper_group BufWinLeave * silent! call s:onBufWinLeave_for_library()
 
 " }}}1
