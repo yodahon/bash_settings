@@ -116,7 +116,7 @@ let g:netrw_keepdir = 0
   "nnoremap <silent> <C-b>      :FufBookmark<CR>
   nnoremap <silent> <C-f><C-t> :FufTag<CR>
   nnoremap <silent> <C-f>t     :FufTag!<CR>
-  noremap  <silent> g]         :FufTagWithCursorWord!<CR>
+  "noremap  <silent> g]         :FufTagWithCursorWord!<CR>
   nnoremap <silent> <C-f>f     :FufTaggedFile<CR>
   nnoremap <silent> <C-f><C-j> :FufJumpList<CR>
   nnoremap <silent> <C-f><C-g> :FufChangeList<CR>

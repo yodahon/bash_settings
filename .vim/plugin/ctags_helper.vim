@@ -9,6 +9,7 @@ endfunction
 " tags option helper {{{1
 let g:ctags_default_files = split("./tags,./../tags,./../../tags,./../../../tags,./*/tags",',')
 
+
 function! s:tags_dict()
   let l:tags_dict = {}
   for tag in split(&tags, ',')
@@ -262,6 +263,11 @@ function! s:onBufWinLeave_for_library()
   windo let l:filetypes[&filetype] += 1
   let l:filetypes[&filetype] -= 1
 
+  "exception
+  if has_key(l:filetypes, "fuf")
+    return
+  endif
+
   if has_key(g:ctags_library_applied,&filetype) && l:filetypes[&filetype] <= 0
     call s:apply_library(&filetype)
   endif
@@ -280,6 +286,9 @@ au! ctag_helper_group
 augroup ctag_helper_group
 autocmd ctag_helper_group BufWinEnter * silent! call s:onBufReadPost_for_library()
 autocmd ctag_helper_group BufWinLeave * silent! call s:onBufWinLeave_for_library()
+"autocmd ctag_helper_group BufEnter * silent! call s:log("BufEnter")
+"autocmd ctag_helper_group BufLeave * silent! call s:log("BufLeave")
+"autocmd ctag_helper_group FileReadPre * silent! call s:log("FileRead")
 
 " }}}1
 
