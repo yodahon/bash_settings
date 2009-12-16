@@ -71,7 +71,7 @@ endfunction
 function! s:refresh_ctags()
   let current_dir = getcwd()
   execute("chdir " . s:project_dir)
-  call s:make_ctags()
+  call s:make_ctags(s:project_dir)
   echo "refreshed tags"
   execute("chdir " . current_dir)
   unlet current_dir
