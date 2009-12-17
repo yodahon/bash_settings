@@ -16,7 +16,7 @@ se nowrap
 se nu
 se cursorline
 se cursorcolumn
-se paste
+"se paste      "This option have side effect for fuf plugin
 
 
 "color
