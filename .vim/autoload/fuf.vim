@@ -179,6 +179,7 @@ function fuf#openBuffer(bufNr, mode, reuse)
         \   s:OPEN_TYPE_SPLIT   : '%ssbuffer'         ,
         \   s:OPEN_TYPE_VSPLIT  : 'vertical %ssbuffer',
         \   s:OPEN_TYPE_TAB     : 'tab %ssbuffer'     ,
+        \   s:OPEN_TYPE_HIDE    : 'hide %sbuffer',
         \ }[a:mode], a:bufNr)
 endfunction
 
@@ -193,6 +194,7 @@ function fuf#openFile(path, mode, reuse)
           \   s:OPEN_TYPE_SPLIT   : 'split '  ,
           \   s:OPEN_TYPE_VSPLIT  : 'vsplit ' ,
           \   s:OPEN_TYPE_TAB     : 'tabedit ',
+          \   s:OPEN_TYPE_HIDE    : 'hide edit ',
           \ }[a:mode] . fnameescape(fnamemodify(a:path, ':~:.'))
   endif
 endfunction
@@ -204,6 +206,7 @@ function fuf#openTag(tag, mode)
         \   s:OPEN_TYPE_SPLIT   : 'stjump '         ,
         \   s:OPEN_TYPE_VSPLIT  : 'vertical stjump ',
         \   s:OPEN_TYPE_TAB     : 'tab stjump '     ,
+        \   s:OPEN_TYPE_HIDE    : 'hide tjump '     ,
         \ }[a:mode] . a:tag
 endfunction
 
@@ -214,6 +217,7 @@ function fuf#prejump(mode)
         \   s:OPEN_TYPE_SPLIT   : 'split'    ,
         \   s:OPEN_TYPE_VSPLIT  : 'vsplit'   ,
         \   s:OPEN_TYPE_TAB     : 'tab split',
+        \   s:OPEN_TYPE_HIDE    : ''         ,
         \ }[a:mode] 
 endfunction
 
@@ -406,6 +410,7 @@ function fuf#launch(modeName, initialPattern, partialMatching)
         \   [ g:fuf_keyOpenSplit  , 'onCr(' . s:OPEN_TYPE_SPLIT   . ', 0)' ],
         \   [ g:fuf_keyOpenVsplit , 'onCr(' . s:OPEN_TYPE_VSPLIT  . ', 0)' ],
         \   [ g:fuf_keyOpenTabpage, 'onCr(' . s:OPEN_TYPE_TAB     . ', 0)' ],
+        \   [ g:fuf_keyOpenHide   , 'onCr(' . s:OPEN_TYPE_HIDE    . ', 0)' ],
         \   [ '<BS>'              , 'onBs()'                               ],
         \   [ '<C-h>'             , 'onBs()'                               ],
         \   [ g:fuf_keyPreview    , 'onPreviewBase()'                      ],
@@ -496,6 +501,7 @@ let s:OPEN_TYPE_CURRENT = 1
 let s:OPEN_TYPE_SPLIT   = 2
 let s:OPEN_TYPE_VSPLIT  = 3
 let s:OPEN_TYPE_TAB     = 4
+let s:OPEN_TYPE_HIDE     =5
 
 " wildcard -> regexp
 function s:convertWildcardToRegexp(expr)
