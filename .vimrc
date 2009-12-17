@@ -40,6 +40,11 @@ endif
 se bg=dark
 
 
+"80 line over mark
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.*/
+
+
 "search
 se hls ic
 
