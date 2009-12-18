@@ -16,7 +16,9 @@ se nowrap
 se nu
 se cursorline
 se cursorcolumn
-"se paste      "This option have side effect for fuf plugin
+if has("gui_running")
+  se paste      "This option have side effect for fuf plugin in terminal
+endif
 
 
 "color
@@ -75,6 +77,7 @@ se modeline
 "map      <silent> <F1> <ESC>:e %:p:h<CR>
 map      <silent> - <ESC>:e %:p:h<CR>
 "nnoremap <silent> <F2> :FufBuffer<CR>
+nnoremap <silent> <F4> <ESC>:hide<CR>
                                            "for YankRing plugin
 nnoremap <silent> <F2> :YRShow<CR>    
                                            "for taglist plugin
