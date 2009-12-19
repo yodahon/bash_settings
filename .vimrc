@@ -72,7 +72,8 @@ set ts=4 sts=4 sw=4 et ai bs=2
 "key map
                                            "etc_helper.vim
 nnoremap <silent> - <ESC>:OpenDirFilePos<CR>
-nnoremap <silent> <F4> <ESC>:hide<CR>
+nnoremap <silent> <F3> <ESC>:hide<CR>
+nnoremap <silent> <F4> <ESC>:close<CR>
                                            "for YankRing plugin
 nnoremap <silent> <F2> :YRShow<CR>    
                                            "for taglist plugin

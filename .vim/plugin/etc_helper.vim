@@ -1,18 +1,4 @@
 
-" SelectIndent {{{1
-function! SelectIndent ()
-  let temp_var=indent(line("."))
-  while indent(line(".")-1) >= temp_var
-    exe "normal k"
-  endwhile
-  exe "normal v"
-  while indent(line(".")+1) >= temp_var
-    exe "normal j"
-  endwhile
-endfunction
-nmap <space> :call SelectIndent()<cr>
-" }}}1
-
 " ProjectInit, ProjectRefresh , ProjectSet {{{1
 function! s:project_init()
   CSInit
