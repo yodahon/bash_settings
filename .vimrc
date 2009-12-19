@@ -41,8 +41,7 @@ else
 endif
 se bg=dark
 
-
-"80 line over mark
+  "80 line over mark
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.*/
 
@@ -50,11 +49,8 @@ match OverLength /\%81v.*/
 "search
 se hls ic
 
-"map
-set ts=4 sts=4 sw=4 et ai bs=2
 
-"file
-"                                               autochdir have bug in netrw.
+"auto chdir dir
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 
 filetype plugin indent on
@@ -71,12 +67,11 @@ runtime ftplugin/man.vim
 "/* vim:set sts=4: */
 se modeline
 "set ts=8 sts=4 sw=4 et ai bs=2
-"
+set ts=4 sts=4 sw=4 et ai bs=2
 
-"map
-"map      <silent> <F1> <ESC>:e %:p:h<CR>
-map      <silent> - <ESC>:e %:p:h<CR>
-"nnoremap <silent> <F2> :FufBuffer<CR>
+"key map
+                                           "etc_helper.vim
+nnoremap <silent> - <ESC>:OpenDirFilePos<CR>
 nnoremap <silent> <F4> <ESC>:hide<CR>
                                            "for YankRing plugin
 nnoremap <silent> <F2> :YRShow<CR>    
@@ -86,7 +81,7 @@ nnoremap <silent> <F9> :OpenTerminal<CR>
 nnoremap <silent> <F10> :OpenShell<CR><CR>
 let g:CS_key = 1
 if has("gui_running")
-nnoremap <silent> <C-s>   <ESC>:w<CR>
+  nnoremap <silent> <C-s>   <ESC>:w<CR>
 endif
 nnoremap <silent> <C-f>s   <ESC>:w<CR>
 
@@ -107,6 +102,7 @@ let g:netrw_keepdir = 0
 "se foldcolumn=4
 
 
+"fuf settings
   let g:fuf_modesDisable = []
   let g:fuf_abbrevMap = {
         \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),

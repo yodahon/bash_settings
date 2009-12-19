@@ -1,5 +1,6 @@
 function! s:open_terminal()
     if has("mac")
+      echo("mac version don't support yet")
 "fill me with below hint
 "--
 "on process_item(this_item)
