@@ -4,3 +4,5 @@
 [user]
 	name = Sangmin Ryu
 	email = neocoin@gmail.com
+[format]
+    pretty = oneline
