@@ -137,3 +137,6 @@ let g:yankring_replace_n_nkey = ""
 "
 
 let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
+
+"for cp
+let g:acp_behaviorSnipmateLength = 1
