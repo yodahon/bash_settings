@@ -33,7 +33,7 @@ function! s:open_shell()
   let l:cmd = "$cmd ." 
 
   let l:current_dir = getcwd()
-  execute("chdir \"" . expand("%:p:h") . "\"")
+  execute("chdir " . substitute(expand("%:p:h"), " ", '\\ ', "g"))
 
   if has("mac")
     call system(substitute(l:cmd, "$cmd", "open", ""))
