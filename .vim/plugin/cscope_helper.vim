@@ -51,19 +51,22 @@ endfunction
 function! s:make_cscope_out(is_update)
     let not_names = split("tags cscope.out cscope.files *.jar *.png *.gif *.jpg *.bmp")
     let not_name = "-not -name \"" . join(not_names, "\" -not -name \"") . "\""
-    "let csout_cmd = "find " . s:csout_dir . " -type f -not -path \"*/.*\" " . not_name ." -printf \"\\\"\\%p\\\"\\n\" > cscope.files && cscope -b "
+
+    let l:csout_cmd = "find " . s:csout_dir . " -type f -not -path \"*/.*\" " . not_name ." -printf \"\\\"\\%p\\\"\\n\" > cscope.files && cscope -b "
     "mac default BSD find utils don't support -printf option
-    let csout_cmd = "find " . s:csout_dir . " -type f -not -path \"*/.*\" " . not_name ." | awk '{print \"\\\"\" $0 \"\\\"\"}' > cscope.files && cscope -b "
+    if has("mac")
+     let l:csout_cmd = "find " . s:csout_dir . " -type f -not -path \"*/.*\" " . not_name ." | awk '{print \"\\\"\" $0 \"\\\"\"}' > cscope.files && cscope -b "
+    endif
     if a:is_update
-        echo csout_cmd
-        call system(csout_cmd . "-U")
+        echo l:csout_cmd
+        call system(l:csout_cmd . "-U")
     else
-        execute("!" . csout_cmd)
+        execute("!" . l:csout_cmd)
         if !has("gui_running")
-            echo csout_cmd
+            echo l:csout_cmd
         endif
     endif
-    unlet csout_cmd
+    unlet l:csout_cmd
     unlet not_names
     unlet not_name
 endfunction    
