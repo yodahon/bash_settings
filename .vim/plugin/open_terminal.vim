@@ -30,17 +30,22 @@ function! s:open_terminal()
 endfunction
 
 function! s:open_shell()
-  let l:cmd = "$cmd '" . expand("%:p:h") . "'" 
+  let l:cmd = "$cmd ." 
+
+  let l:current_dir = getcwd()
+  execute("chdir \"" . expand("%:p:h") . "\"")
 
   if has("mac")
-    call system(substitute(l:cmd, "$cmd", "open", "")
+    call system(substitute(l:cmd, "$cmd", "open", ""))
   elseif has("gui_gnome")
-    call system(substitute(l:cmd, "$cmd", "nautilus", "")
+    call system(substitute(l:cmd, "$cmd", "nautilus", ""))
   elseif has("gui_win32")
-    call system(substitute(l:cmd, "$cmd", "explorer", "")
+    call system(substitute(l:cmd, "$cmd", "explorer", ""))
   elseif executable("bash")
     !bash
   endif
+
+  execute("chdir " . l:current_dir)
 endfunction
 
 command! -nargs=0 -bar OpenTerminal call s:open_terminal()
