@@ -15,9 +15,9 @@ snippet var
 	var ${1:name}:${2:Type} = new $2(${3});${4}
 # Function
 snippet function
-	${1:public} function ${1:functionName}(${2:argument}):${3:void} 
+	${1:public} function ${2:functionName}(${3:argument}):${4:void} 
 	{
-		${4:// body..}
+		${5:// body..}
 	}
 # Anonymous Function
 snippet f
@@ -112,4 +112,6 @@ snippet gett
 	getElementBy${1:Id}('${2}')${3}
 # addEventListener
 snippet add
-	addEventListener( ${1:Event}, ${2:function} );
+	addEventListener( ${1:Event}, ${2:function} );${3}
+
+# vim: set fdm=manual:

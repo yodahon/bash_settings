@@ -14,4 +14,4 @@
 --regex-actionscript=/.*\.prototype \.([A-Za-z0-9 ]+)=([ \t]?)function( [ \t]?)*\(/\1/ f,function, functions/
 --regex-actionscript=/[ \t]*class[ \t]+([A-Za-z0-9_]+)[ \t]*/\1/c,class, classes/
 --regex-actionscript=/[ \t]*interface[ \t]+([A-Za-z0-9_]+)[ \t]*/\1/i,interface, interfacses/
---regex-actionscript=/[ \t]*package[ \t]+([A-Za-z0-9\.]+)/\1,package,packages/
+--regex-actionscript=/[ \t]*package[ \t]+([A-Za-z0-9\.]+)/\1/p,package, packages/
