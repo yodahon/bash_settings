@@ -1,48 +1,46 @@
 function! s:open_terminal()
-    if has("mac")
-      echo("mac version don't support yet")
-"fill me with below hint
-"--
-"on process_item(this_item)
-    "set the_path to POSIX path of this_item
-    "repeat until the_path ends with "/"
-        "set the_path to text 1 thru -2 of the_path
-    "end repeat
-    
-    "set cmd to "cd " & quoted form of the_path & " && echo $'\\ec'"
-    
-    "tell application "System Events" to set terminalIsRunning to exists application process "Terminal"
-    
-    "tell application "Terminal"
-        "activate
-        "if terminalIsRunning is true then
-            "do script with command cmd
-        "else
-            "do script with command cmd in window 1
-        "end if
-    "end tell
-    
-"end process_item
+  if has("mac")
+    let l:cmd = "
+      \ tell application 'System Events'            \n
+      \   set terminalIsRunning to exists application process '$Terminal' \n
+      \ end tell                                    \n
+      \
+      \ set cmd to 'cd $current_path'               \n
+      \ tell application '$Terminal'                \n
+      \   activate                                  \n
+      \   if terminalIsRunning is true then         \n
+      \     do script with command cmd              \n
+      \   else                                      \n
+      \     do script with command cmd in window 1  \n
+      \   end if                                    \n
+      \ end tell                                    \n
+      \ "
+    let l:cmd = substitute(l:cmd,  "'", '\\"', 'g') 
+    let l:cmd = substitute( l:cmd, "$Terminal", "Terminal", "g" )
+    let l:cmd = substitute( l:cmd, "$current_path", "'" . expand("%:p:h") . "'" , "g")
+    call system('osascript -e " ' . l:cmd . '"')
 
-    elseif has("gui_gnome")
-        call system("gnome-terminal &") 
-    elseif has("gui_win32")
-        !cmd &
-    elseif executable("bash")
-        !bash
-    endif
+  elseif has("gui_gnome")
+    call system("gnome-terminal &") 
+  elseif has("gui_win32")
+    !cmd &
+  elseif executable("bash")
+    !bash
+  endif
 endfunction
 
 function! s:open_shell()
-    if has("mac")
-        !open .
-    elseif has("gui_gnome")
-        call system("nautilus . &") 
-    elseif has("gui_win32")
-        !explorer . &
-    elseif executable("bash")
-        !bash
-    endif
+  let l:cmd = "$cmd '" . expand("%:p:h") . "'" 
+
+  if has("mac")
+    call system(substitute(l:cmd, "$cmd", "open", "")
+  elseif has("gui_gnome")
+    call system(substitute(l:cmd, "$cmd", "nautilus", "")
+  elseif has("gui_win32")
+    call system(substitute(l:cmd, "$cmd", "explorer", "")
+  elseif executable("bash")
+    !bash
+  endif
 endfunction
 
 command! -nargs=0 -bar OpenTerminal call s:open_terminal()
