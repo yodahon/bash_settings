@@ -181,8 +181,6 @@ function! s:remove_library(num)
   endif
 
   call s:save_info_file()
-
-  call s:show_library()
 endfunction
 
 
@@ -208,7 +206,6 @@ function! s:add_library(dir, filetype)
 
   call s:save_info_file()
   call filter(g:ctags_library_applied, "v:key != a:filetype")
-  call s:show_library()
 endfunction
 
 
@@ -236,7 +233,6 @@ function! s:manage_library(...)
     elseif a:1 == "remove"
       call s:remove_library(str2nr(a:2))
     elseif a:1 == "show"
-      call s:show_library()
     elseif a:1 == "apply" && a:0 == 2
       call s:apply_library(a:2)
     elseif a:1 == "unapply" && a:0 == 2
