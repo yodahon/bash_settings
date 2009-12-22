@@ -5,13 +5,13 @@ function! s:open_terminal()
   if has("mac")
     let l:cmd = "
       \ tell application 'System Events'            \n
-      \   set terminalIsRunning to exists application process '$Terminal' \n
+      \   set is_term_running to exists application process '$Terminal' \n
       \ end tell                                    \n
       \
       \ set cmd to 'cd $current_path'               \n
       \ tell application '$Terminal'                \n
       \   activate                                  \n
-      \   if terminalIsRunning is true then         \n
+      \   if is_term_running is true then           \n
       \     do script with command cmd              \n
       \   else                                      \n
       \     do script with command cmd in window 1  \n
