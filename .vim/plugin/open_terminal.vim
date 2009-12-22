@@ -1,4 +1,7 @@
 function! s:open_terminal()
+  let l:current_dir = getcwd()
+  execute("chdir " . substitute(expand("%:p:h"), " ", '\\ ', "g"))
+
   if has("mac")
     let l:cmd = "
       \ tell application 'System Events'            \n
@@ -23,24 +26,34 @@ function! s:open_terminal()
   elseif has("gui_gnome")
     call system("gnome-terminal &") 
   elseif has("gui_win32")
-    !cmd &
+    try
+      call system("start cmd")
+    catch /E484:/
+      echo "Ignore E484 error in Windows platform"
+    endtry
   elseif executable("bash")
     !bash
+  elseif has("win32")
+    stop
   endif
+
+  execute("chdir " . l:current_dir)
 endfunction
 
-function! s:open_shell()
+function! s:open_filemanager()
   let l:cmd = "$cmd ." 
 
   let l:current_dir = getcwd()
   execute("chdir " . substitute(expand("%:p:h"), " ", '\\ ', "g"))
 
   if has("mac")
-    call system(substitute(l:cmd, "$cmd", "open", ""))
-  elseif has("gui_gnome")
-    call system(substitute(l:cmd, "$cmd", "nautilus", ""))
-  elseif has("gui_win32")
-    call system(substitute(l:cmd, "$cmd", "explorer", ""))
+    call system("open .")
+  elseif has("gui_gnome") && executable("nautilus")
+    call system("nautilus .")
+  elseif has("gui_gnome") && executable("konqueror")
+    call system("konqueror .")
+  elseif has("gui_win32") || has("win32")
+    call system("explorer .")
   elseif executable("bash")
     !bash
   endif
@@ -49,4 +62,4 @@ function! s:open_shell()
 endfunction
 
 command! -nargs=0 -bar OpenTerminal call s:open_terminal()
-command! -nargs=0 -bar OpenShell call s:open_shell()
+command! -nargs=0 -bar OpenFilemanager call s:open_filemanager()
