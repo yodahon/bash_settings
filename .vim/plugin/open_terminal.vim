@@ -1,6 +1,6 @@
 function! s:open_terminal()
   let l:current_dir = getcwd()
-  execute("chdir " . substitute(expand("%:p:h"), " ", '\\ ', "g"))
+  execute("chdir " . escape(expand("%:p:h"), " \"'"))
 
   if has("mac")
     let l:cmd = "
@@ -37,14 +37,14 @@ function! s:open_terminal()
     stop
   endif
 
-  execute("chdir " . l:current_dir)
+  execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
 function! s:open_filemanager()
   let l:cmd = "$cmd ." 
 
   let l:current_dir = getcwd()
-  execute("chdir " . substitute(expand("%:p:h"), " ", '\\ ', "g"))
+  execute("chdir " . escape(expand("%:p:h"), " \"'"))
 
   if has("mac")
     call system("open .")
@@ -58,7 +58,7 @@ function! s:open_filemanager()
     !bash
   endif
 
-  execute("chdir " . l:current_dir)
+  execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
 command! -nargs=0 -bar OpenTerminal call s:open_terminal()

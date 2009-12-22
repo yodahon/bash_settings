@@ -33,9 +33,9 @@ let s:project_dir = ""
 function! s:make_ctags(project_dir)
   let tags_cmd = "!ctags -R "
   let current_dir = getcwd()
-  execute("chdir " . a:project_dir)
+  execute("chdir " . escape(a:project_dir, " \"'"))
   execute(tags_cmd)
-  execute("chdir " . current_dir)
+  execute("chdir " . escape(current_dir, " \"'"))
   unlet current_dir
 
   if !has("gui_running")
@@ -70,10 +70,10 @@ endfunction
 
 function! s:refresh_ctags()
   let current_dir = getcwd()
-  execute("chdir " . s:project_dir)
+  execute("chdir " . escape(s:project_dir, " \"'"))
   call s:make_ctags(s:project_dir)
   echo "refreshed tags"
-  execute("chdir " . current_dir)
+  execute("chdir " . escape(current_dir, " \"'"))
   unlet current_dir
 endfunction
 " }}}1
@@ -209,9 +209,9 @@ function! s:add_library(dir, filetype)
     let msg = "Din't find tags file. \nDo you make tags with '!ctags -R'? (y/n): "
     if input(msg) == "y"
       let old = getcwd()
-      execute("chdir " . a:dir)
+      execute("chdir " . escape(a:dir, " \"'"))
       execute("!ctags -R")
-      execute("chdir " . old)
+      execute("chdir " . escape(old, " \"'"))
       let l:lib_dicts[a:dir . "/tags"]=1
     endif
   endif

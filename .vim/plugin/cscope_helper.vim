@@ -92,20 +92,20 @@ endfunction
 
 function! s:refresh_cscope()
     let current_dir = getcwd()
-    execute("chdir " . s:csout_dir)
+    execute("chdir " . escape(s:csout_dir, " \"'"))
     call s:make_cscope_out(1)
     echo "refreshed cscope.out"
     call s:add_cscope_out()
-    execute("chdir " . current_dir)
+    execute("chdir " . escape(current_dir, " \"'"))
     unlet current_dir
 endfunction
 
 function! s:update_cscope()
     let current_dir = getcwd()
-    execute("chdir " . s:csout_dir)
+    execute("chdir " . escape(s:csout_dir, " \"'"))
     cscope -U %:p
 
-    execute("chdir " . current_dir)
+    execute("chdir " . escape(current_dir, " \"'"))
     unlet current_dir
 endfunction
 

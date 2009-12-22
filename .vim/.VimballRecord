@@ -1,0 +1,1 @@
+sherlock.vba: call delete('/Users/neocoin/.vim/autoload/sherlock.vim')|call delete('/Users/neocoin/.vim/plugin/sherlock.vim')
