@@ -10,11 +10,23 @@ snippet package
 			}
 		}
 	}
+
 # var
 snippet var
-	var ${1:name}:${2:Type} = new $2(${3});${4}
+	var ${1:name}:${2:Type} = ${3:new $2}${4:()};${5}
+# pub
+snippet pub
+	${1:public} ${2:var} ${3:name}:${4:type};${5}
+# public
+snippet public
+	${1:public} ${2:var} ${3:name}:${4:type};${5}
 # Function
 snippet function
+	${1:public} function ${2:functionName}(${3:argument}):${4:void} 
+	{
+		${5:// body..}
+	}
+snippet fun
 	${1:public} function ${2:functionName}(${3:argument}):${4:void} 
 	{
 		${5:// body..}

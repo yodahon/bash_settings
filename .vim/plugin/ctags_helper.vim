@@ -183,6 +183,18 @@ function! s:remove_library(num)
   call s:save_info_file()
 endfunction
 
+function! s:open_library(num)
+  let l:count = 0
+  for filetype in sort(keys(g:ctags_library_dicts))
+    for tag_file in sort(keys(g:ctags_library_dicts[filetype]))
+      if l:count == a:num
+        execute("sp ". substitute(tag_file, " ", '\\ ', "g"))
+        break
+      endif
+      let l:count += 1
+    endfor
+  endfor
+endfunction
 
 function! s:add_library(dir, filetype)
   let l:dirs ={}
@@ -218,6 +230,7 @@ function! s:manage_library(...)
     echo "show    : show library paths"
     echo "apply   : apply library by {filetype}.    (usage: apply {filetype})"
     echo "unapply : unapply library by {filetype}.  (usage: apply {filetype})"
+    echo "open    : open library tag file.          (usage: open  {n})"
     echo "  "
   else
     if a:1 == "add"
@@ -232,6 +245,9 @@ function! s:manage_library(...)
       endif
     elseif a:1 == "remove"
       call s:remove_library(str2nr(a:2))
+    elseif a:1 == "open"
+      call s:open_library(str2nr(a:2))
+      return
     elseif a:1 == "show"
     elseif a:1 == "apply" && a:0 == 2
       call s:apply_library(a:2)
