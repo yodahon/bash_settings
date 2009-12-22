@@ -1,3 +1,26 @@
+"
+" File:        open_terminal.vim
+" 
+" Requires:
+"   platform   Terminal             File manager 
+"   Mac        Terminal.app         Finder
+"              (with Applescript)   
+"   Gnome      gnome-terminal       nautilus
+"   KDE        konsole              konqueror
+"   Windows    cmd                  explorer
+"              (with start)
+"   cygwin     bash                 explorer
+"
+" Example:
+"   nnoremap <silent> <F9> :OpenTerminal<CR>
+"   nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
+"   
+" Commands:
+"   OpenTerminal
+"   OpenFilemanager
+"
+
+" OpenTerminal {{{1
 function! s:open_terminal()
   let l:current_dir = getcwd()
   execute("chdir " . escape(expand("%:p:h"), " \"'"))
@@ -23,8 +46,10 @@ function! s:open_terminal()
     let l:cmd = substitute( l:cmd, "$current_path", "'" . expand("%:p:h") . "'" , "g")
     call system('osascript -e " ' . l:cmd . '"')
 
-  elseif has("gui_gnome")
+  elseif has("gui_gnome") && executable("gnome-terminal")
     call system("gnome-terminal &") 
+  elseif has("gui_gnome") && executable("konsole")
+    call system("konsole &") 
   elseif has("gui_win32")
     try
       call system("start cmd")
@@ -40,6 +65,11 @@ function! s:open_terminal()
   execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
+command! -nargs=0 -bar OpenTerminal call s:open_terminal()
+
+"}}}1
+
+" OpenFilemanager {{{1
 function! s:open_filemanager()
   let l:cmd = "$cmd ." 
 
@@ -61,5 +91,18 @@ function! s:open_filemanager()
   execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
-command! -nargs=0 -bar OpenTerminal call s:open_terminal()
 command! -nargs=0 -bar OpenFilemanager call s:open_filemanager()
+" }}}1
+
+" About file info {{{1
+"=============================================================================
+" Copyright (c) 2009 by neocoin
+" File:						open_terminal.vim
+" Author:					Sangmin Ryu (neocoin@gmail.com)
+" Date:						Tue Dec 22 13:33:32 PST 2009
+" License:				The MIT License
+" Version:				0.1
+"=============================================================================
+" }}}1
+
+" vim: set fdm=marker:
