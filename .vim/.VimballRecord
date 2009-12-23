@@ -1,1 +1,2 @@
 sherlock.vba: call delete('/Users/neocoin/.vim/autoload/sherlock.vim')|call delete('/Users/neocoin/.vim/plugin/sherlock.vim')
+open_terminal.vba: call delete('/Users/neocoin/.vim/plugin/open_terminal.vim')|call delete('/Users/neocoin/.vim/doc/open_terminal.txt')

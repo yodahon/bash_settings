@@ -2,13 +2,12 @@
 
 " Simple log {{{1
 function! s:log(msg)
-  execute("!echo \"" . substitute(a:msg, '"', '\\"', "g") . " \" >> ~/temp/vim.log")
+  call system("echo \"" . escape(a:msg, "\"") . " \" >> ~/temp/vim.log")
 endfunction
 " }}}1
 
 " tags option helper {{{1
 let g:ctags_default_files = split("./tags,./../tags,./../../tags,./../../../tags,./*/tags",',')
-
 
 function! s:tags_dict()
   let l:tags_dict = {}
@@ -75,6 +74,31 @@ function! s:refresh_ctags()
   echo "refreshed tags"
   execute("chdir " . escape(current_dir, " \"'"))
   unlet current_dir
+endfunction
+
+function! s:show_project()
+  echo("Project dir : " . s:project_dir)
+endfunction
+
+function! s:manage_project(...)
+  if a:0 == 0
+    echo "CTProject command"
+    echo "  init"
+    echo "  set"
+    echo "  refresh"
+    echo "  release"
+    echo "  "
+  else
+    if     a:1 == "init"
+      call s:init_ctags()
+    elseif a:1 == "set"
+      call s:set_tags_dir(getcwd())
+    elseif a:1 == "refresh"
+      call s:refresh_ctags()
+    elseif a:1 == "release"
+    endif
+  endif
+  call s:show_project()
 endfunction
 " }}}1
 
@@ -224,13 +248,13 @@ endfunction
 function! s:manage_library(...) 
   if a:0 == 0
     echo "CTLibrary command"
-    echo "add     : add current or target director to library path.   (usage: add [dir] [filetype])"
-    echo "remove  : remove library paths.           (usage: remove {n}|all"
-    echo "          {n} : index"
-    echo "show    : show library paths"
-    echo "apply   : apply library by {filetype}.    (usage: apply {filetype})"
-    echo "unapply : unapply library by {filetype}.  (usage: apply {filetype})"
-    echo "open    : open library tag file.          (usage: open  {n})"
+    echo "  add    : add target dir to library path.(usage: add [dir] [filetype])"
+    echo "  remove : remove library paths.          (usage: remove {n}|all"
+    echo "           {n} : index"
+    echo "  show   : show library paths"
+    echo "  apply  : apply library by {filetype}.   (usage: apply {filetype})"
+    echo "  unapply: unapply library by {filetype}. (usage: apply {filetype})"
+    echo "  open   : open library tag file.         (usage: open  {n})"
     echo "  "
   else
     if a:1 == "add"
@@ -260,9 +284,7 @@ endfunction
 " }}}1
 
 " define command {{{1
-command! -nargs=0 -bar CTInit call s:init_ctags()
-command! -nargs=0 -bar CTSet call s:set_tags_dir(getcw())
-command! -nargs=0 -bar CTRefresh call s:refresh_ctags()
+command! -nargs=* -bar CTProject call s:manage_project(<f-args>)
 command! -nargs=* -bar CTLibrary call s:manage_library(<f-args>)
 " }}}1
 
@@ -271,9 +293,44 @@ function! s:onBufWinEnter_for_library()
   call s:apply_library(&filetype)
 endfunction
 
-augroup ctag_helper_group
+function! s:update_ctags(tag_dir, target_file)
+  let l:current_dir = getcwd()
+  execute("chdir " . escape(a:tag_dir, " \"'"))
+  call system("ctags -a " . escape(a:target_file, " \"'"))
+  execute("chdir " . escape(l:current_dir, " \"'"))
+endfunction
+
+function! s:onBufWritePost_for_project()
+  let l:tags_dict = s:tags_dict()
+
+  let l:current_dir = getcwd()
+  let l:current_file = expand("%:p")
+
+  "update librarys
+  for filetype in sort(keys(g:ctags_library_dicts))
+    for tag_file in sort(keys(g:ctags_library_dicts[filetype]))
+      if stridx(tag_file,".") == 0
+        continue
+      endif
+
+      let tag_dir = substitute(simplify(expand(tag_file)),"/tags$","","g")
+      if stridx(l:current_dir, tag_dir) == 0
+        call s:update_ctags(tag_dir, l:current_file)
+      endif
+      unlet tag_dir
+    endfor
+  endfor
+
+  "update projec
+  if !empty(s:project_dir) && stridx(l:current_dir, s:project_dir) == 0
+    call s:update_ctags(s:project_dir, l:current_file)
+  endif
+endfunction
+
+augroup  ctag_helper_group
 autocmd! ctag_helper_group
-autocmd ctag_helper_group BufWinEnter * silent! call s:onBufWinEnter_for_library()
+autocmd  ctag_helper_group BufWinEnter * silent! call s:onBufWinEnter_for_library()
+autocmd  ctag_helper_group BufWritePost * silent! call s:onBufWritePost_for_project()
 
 " }}}1
 

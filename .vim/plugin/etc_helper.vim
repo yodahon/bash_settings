@@ -2,17 +2,17 @@
 " ProjectInit, ProjectRefresh , ProjectSet {{{1
 function! s:project_init()
   CSInit
-  CTInit
+  CTProject init
 endfunction
 
 function! s:project_refresh()
   CSRefresh
-  CTRefresh
+  CTProject refresh
 endfunction
 
 function! s:project_set()
   CSSet
-  CTSet
+  CTProject set
 endfunction
 
 command! -nargs=0 -bar ProjectInit call s:project_init()
