@@ -7,3 +7,6 @@
 	email = neocoin@gmail.com
 [format]
     pretty = oneline
+[diff]
+    color = true
+    
