@@ -25,7 +25,7 @@ command! -nargs=0 -bar ProjectSet call s:project_set()
 
 function! s:open_dir_file_pos()
   let l:current_filename = expand("%")
-  execute("e " . expand("%:p:h"))
+  execute("e " . escape(expand("%:p:h"), " "))
   set nu
   let line = searchpos(l:current_filename)
 endfunction
