@@ -22,7 +22,7 @@ function! s:set_tags(tags_dict)
     let a:tags_dict[file] = 1
   endfor
 
-  execute "set tags=" . join(sort(keys(a:tags_dict)), ',')
+  execute "set tags=" . escape(join(sort(keys(a:tags_dict)), ','), " \"'")
 endfunction
 " }}}1
 
