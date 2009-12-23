@@ -283,16 +283,7 @@ function! s:manage_library(...)
 endfunction
 " }}}1
 
-" define command {{{1
-command! -nargs=* -bar CTProject call s:manage_project(<f-args>)
-command! -nargs=* -bar CTLibrary call s:manage_library(<f-args>)
-" }}}1
-
-" Event bind {{{1
-function! s:onBufWinEnter_for_library()
-  call s:apply_library(&filetype)
-endfunction
-
+" update current file to tags after saving{{{1
 function! s:update_ctags(tag_dir, target_file)
   let l:current_dir = getcwd()
   execute("chdir " . escape(a:tag_dir, " \"'"))
@@ -300,7 +291,8 @@ function! s:update_ctags(tag_dir, target_file)
   execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
-function! s:onBufWritePost_for_project()
+
+function! s:update_current_to_related_tags()
   let l:tags_dict = s:tags_dict()
 
   let l:current_dir = getcwd()
@@ -321,16 +313,31 @@ function! s:onBufWritePost_for_project()
     endfor
   endfor
 
-  "update projec
+  "update project
   if !empty(s:project_dir) && stridx(l:current_dir, s:project_dir) == 0
     call s:update_ctags(s:project_dir, l:current_file)
   endif
 endfunction
+" }}}1
+
+" define command {{{1
+command! -nargs=* -bar CTProject call s:manage_project(<f-args>)
+command! -nargs=* -bar CTLibrary call s:manage_library(<f-args>)
+" }}}1
+
+" Event bind {{{1
+function! s:onBufWinEnter()
+  call s:apply_library(&filetype)
+endfunction
+
+function! s:onBufWritePost()
+  call s:update_current_to_related_tags();
+endfunction
 
 augroup  ctag_helper_group
 autocmd! ctag_helper_group
-autocmd  ctag_helper_group BufWinEnter * silent! call s:onBufWinEnter_for_library()
-autocmd  ctag_helper_group BufWritePost * silent! call s:onBufWritePost_for_project()
+autocmd  ctag_helper_group BufWinEnter * silent! call s:onBufWinEnter()
+autocmd  ctag_helper_group BufWritePost * silent! call s:onBufWritePost()
 
 " }}}1
 
