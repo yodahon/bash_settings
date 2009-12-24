@@ -58,7 +58,7 @@ se backup
 se backupdir=$HOME/$MYVIMDIR/backups
 
 "tags
-set tags=./tags,./../tags,./../../tags,./../../../tags,./*/tags
+set tags=./tags,./../tags,./../../tags,./../../../tags,./../../../../tags
 
 "ftplugin "using \K
 runtime ftplugin/man.vim 

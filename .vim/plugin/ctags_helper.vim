@@ -1,13 +1,18 @@
 
 
-" Simple log {{{1
+" Utilities : simple log, path separator {{{1
 function! s:log(msg)
   call system("echo \"" . escape(a:msg, "\"") . " \" >> ~/temp/vim.log")
 endfunction
+
+function! s:separator()
+  return (has('win32') || has('win64') ? '\' : '/')
+endfunction
+
 " }}}1
 
 " tags option helper {{{1
-let g:ctags_default_files = split("./tags,./../tags,./../../tags,./../../../tags,./*/tags",',')
+let g:ctags_default_files = split("./tags,./../tags,./../../tags,./../../../tags,./../../../../tags",',')
 
 function! s:tags_dict()
   let l:tags_dict = {}
@@ -291,33 +296,19 @@ function! s:update_ctags(tag_dir, target_file)
   execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
-
 function! s:update_current_to_related_tags()
-  let l:tags_dict = s:tags_dict()
-
-  let l:current_dir = getcwd()
   let l:current_file = expand("%:p")
+  let l:levels = insert(split(expand("%:p:h"),s:separator()), "1")
 
-  "update librarys
-  for filetype in sort(keys(g:ctags_library_dicts))
-    for tag_file in sort(keys(g:ctags_library_dicts[filetype]))
-      if stridx(tag_file,".") == 0
-        continue
-      endif
-
-      let tag_dir = substitute(simplify(expand(tag_file)),"/tags$","","g")
-      if stridx(l:current_dir, tag_dir) == 0
-        call s:update_ctags(tag_dir, l:current_file)
-      endif
-      unlet tag_dir
-    endfor
+  let l:tag_dir = "." . s:separator()
+  for level in l:levels
+    if filereadable(l:tag_dir . s:separator() . "tags")
+      call s:update_ctags(l:tag_dir, l:current_file)
+    endif
+    let l:tag_dir = l:tag_dir . ".." . s:separator()
   endfor
-
-  "update project
-  if !empty(s:project_dir) && stridx(l:current_dir, s:project_dir) == 0
-    call s:update_ctags(s:project_dir, l:current_file)
-  endif
 endfunction
+
 " }}}1
 
 " define command {{{1
