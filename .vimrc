@@ -93,6 +93,7 @@ let g:yankring_history_dir="$HOME/$MYVIMDIR"
 "hide hidden file for netrw plugin
 let g:netrw_list_hide = "\\(^\\|\\s\\s\\)\\zs\\.\\S\\+"
 let g:netrw_keepdir = 0
+let g:netrw_liststyle=1
 
 "about fold
 "autocmd BufWinLeave * if expand("%") != "" | mkview | endif
@@ -127,6 +128,7 @@ let g:netrw_keepdir = 0
   nnoremap <silent> <C-f><C-g> :FufChangeList<CR>
   "nnoremap <silent> <C-f><C-q> :FufQuickfix<CR>
   nnoremap <silent> <C-f><C-l> :FufLine<CR>
+  nnoremap <silent> <C-g>      :FufLine!<CR>
   nnoremap <silent> <C-f><C-h> :FufHelp<CR>
   "nnoremap <silent> <C-f><C-b> :FufAddBookmark<CR>
   "vnoremap <silent> <C-f><C-b> :FufAddBookmarkAsSelectedText<CR>
