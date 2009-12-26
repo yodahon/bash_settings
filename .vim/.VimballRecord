@@ -1,2 +1,4 @@
 sherlock.vba: call delete('/Users/neocoin/.vim/autoload/sherlock.vim')|call delete('/Users/neocoin/.vim/plugin/sherlock.vim')
 open_terminal.vba: call delete('/Users/neocoin/.vim/plugin/open_terminal.vim')|call delete('/Users/neocoin/.vim/doc/open_terminal.txt')
+delimitMate.vba: call delete('/Users/neocoin/.vim/doc/delimitMate.txt')|call delete('/Users/neocoin/.vim/plugin/delimitMate.vim')
+Align.vba: call delete('/Users/neocoin/.vim/plugin/AlignPlugin.vim')|call delete('/Users/neocoin/.vim/plugin/AlignMapsPlugin.vim')|call delete('/Users/neocoin/.vim/plugin/cecutil.vim')|call delete('/Users/neocoin/.vim/doc/Align.txt')|call delete('/Users/neocoin/.vim/autoload/Align.vim')|call delete('/Users/neocoin/.vim/autoload/AlignMaps.vim')

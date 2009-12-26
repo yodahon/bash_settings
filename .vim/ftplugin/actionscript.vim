@@ -33,7 +33,7 @@ syn region  actionScriptStringS				start=+'+  skip=+\\\\\|\\'+  end=+'+  contain
 syn match   actionScriptSpecialCharacter		"'\\.'"
 syn match   actionScriptNumber				"-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
 syn keyword actionScriptConditional			if else and or not
-syn keyword actionScriptRepeat				do while for in
+syn keyword actionScriptRepeat				do while for in each
 syn keyword actionScriptCase				break continue switch case default
 syn keyword actionScriptConstructor			new
 syn keyword actionScriptObjects				arguments Array Boolean Date _global Math Number Object String super var this Accessibility Color Key _level Mouse _root Selection Sound Stage System TextFormat LoadVars XML XMLSocket XMLNode LoadVars Button TextField TextSnapshot CustomActions Error ContextMenu ContextMenuItem NetConnection NetStream Video PrintJob MovieClipLoader StyleSheet Camera LocalConnection Microphone SharedObject MovieClip

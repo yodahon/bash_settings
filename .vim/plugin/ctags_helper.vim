@@ -292,7 +292,7 @@ endfunction
 function! s:update_ctags(tag_dir, target_file)
   let l:current_dir = getcwd()
   execute("chdir " . escape(a:tag_dir, " \"'"))
-  call system("ctags -a " . escape(a:target_file, " \"'"))
+  call system("ctags --append=yes " . escape(a:target_file, " \"'"))
   execute("chdir " . escape(l:current_dir, " \"'"))
 endfunction
 
