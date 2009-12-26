@@ -85,6 +85,9 @@ if has("gui_running")
   nnoremap <silent> <C-s>   <ESC>:w<CR>
 endif
 nnoremap <silent> <C-f>s   <ESC>:w<CR>
+                                           "for NERDComment"
+nnoremap <silent> <C-C>    :call NERDComment(0, "toggle")<CR>
+vnoremap <silent> <C-C>    <ESC>:call NERDComment(1, "toggle")<CR>
 
 "for MRU plugin
 let MRU_Max_Entries = 200
