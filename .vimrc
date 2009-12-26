@@ -149,5 +149,5 @@ let g:acp_behaviorSnipmateLength = 1
 
 "for NERDTree
 let g:NERDTreeChDirMode     = 2
-let g:NERDTreeMapChangeRoot = "d"
+let g:NERDTreeMapChangeRoot = ";"
 let g:NERDTreeMapUpdir      = "-"
