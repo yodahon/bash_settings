@@ -146,3 +146,8 @@ let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:va
 
 "for cp
 let g:acp_behaviorSnipmateLength = 1
+
+"for NERDTree
+let g:NERDTreeChDirMode     = 2
+let g:NERDTreeMapChangeRoot = "d"
+let g:NERDTreeMapUpdir      = "-"
