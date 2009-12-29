@@ -30,6 +30,7 @@ function! s:open_dir_file_pos()
   try
     let line = searchpos(l:current_filename)
   catch /E35:/
+    let line = searchpos(expand("%p:h"))
   endtry
 endfunction
 command! -nargs=0 -bar OpenDirFilePos call s:open_dir_file_pos()
