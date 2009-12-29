@@ -24,7 +24,7 @@ command! -nargs=0 -bar ProjectSet call s:project_set()
 " OpenDirFilePos {{{1
 
 function! s:open_dir_file_pos()
-  let l:current_filename = expand("%")
+  let l:current_filename = expand("%:p:t")
   execute("e " . escape(expand("%:p:h"), " "))
   set nu
   try
