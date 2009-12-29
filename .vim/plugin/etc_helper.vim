@@ -27,7 +27,10 @@ function! s:open_dir_file_pos()
   let l:current_filename = expand("%")
   execute("e " . escape(expand("%:p:h"), " "))
   set nu
-  let line = searchpos(l:current_filename)
+  try
+    let line = searchpos(l:current_filename)
+  catch /E35:/
+  endtry
 endfunction
 command! -nargs=0 -bar OpenDirFilePos call s:open_dir_file_pos()
 
