@@ -228,6 +228,12 @@ NERD_tree.txt	NERD_tree.txt	/*NERD_tree.txt*
 OpenFilemanager	open_terminal.txt	/*OpenFilemanager*
 OpenTerminal	open_terminal.txt	/*OpenTerminal*
 ResetSnippets()	snipMate.txt	/*ResetSnippets()*
+RltvNmbr	RltvNmbr.txt	/*RltvNmbr*
+RltvNmbr-contents	RltvNmbr.txt	/*RltvNmbr-contents*
+RltvNmbr-copyright	RltvNmbr.txt	/*RltvNmbr-copyright*
+RltvNmbr-history	RltvNmbr.txt	/*RltvNmbr-history*
+RltvNmbr-manual	RltvNmbr.txt	/*RltvNmbr-manual*
+RltvNmbr.txt	RltvNmbr.txt	/*RltvNmbr.txt*
 Tlist_Get_Tag_Prototype_By_Line()	taglist.txt	/*Tlist_Get_Tag_Prototype_By_Line()*
 Tlist_Get_Tagname_By_Line()	taglist.txt	/*Tlist_Get_Tagname_By_Line()*
 Tlist_Set_App()	taglist.txt	/*Tlist_Set_App()*

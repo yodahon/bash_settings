@@ -25,12 +25,16 @@ command! -nargs=0 -bar ProjectSet call s:project_set()
 
 function! s:open_dir_file_pos()
   let l:current_filename = expand("%:p:t")
+  let l:current_dir = getcwd()
   execute("e " . escape(expand("%:p:h"), " "))
   set nu
   try
     let line = searchpos(l:current_filename)
-  catch /E35:/
-    let line = searchpos(expand("%p:h"))
+    if line[0] == 0 && line[1] == 0
+      throw "E35"
+    endif
+  catch /E35/
+    let line = searchpos(l:current_dir)
   endtry
 endfunction
 command! -nargs=0 -bar OpenDirFilePos call s:open_dir_file_pos()
