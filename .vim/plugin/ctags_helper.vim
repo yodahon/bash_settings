@@ -132,9 +132,9 @@ endfunction
 call s:load_info_file()
 
 function! s:save_info_file()
-  if filereadable(expand(g:ctags_info_file))
-    call writefile([string(g:ctags_library_dicts)],expand(g:ctags_info_file))
-  endif
+  "if filereadable(expand(g:ctags_info_file))
+  call writefile([string(g:ctags_library_dicts)],expand(g:ctags_info_file))
+  "endif
 endfunction
 
 function! s:show_library()
