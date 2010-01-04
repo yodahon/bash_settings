@@ -6,7 +6,7 @@ snippet package
 		{
 			public function $2()
 			{
-				${4:// body..}
+				${4}
 			}
 		}
 	}
@@ -14,22 +14,26 @@ snippet package
 # var
 snippet var
 	var ${1:name}:${2:Type} = ${3:new $2}${4:()};${5}
+# pri
+snippet pri
+	${1:private} ${2:var} ${3:name}:${4:type};${5}
+# pro
+snippet pro
+	${1:protected} ${2:var} ${3:name}:${4:type};${5}
 # pub
 snippet pub
 	${1:public} ${2:var} ${3:name}:${4:type};${5}
-# public
-snippet public
-	${1:public} ${2:var} ${3:name}:${4:type};${5}
+
 # Function
 snippet function
 	${1:public} function ${2:functionName}(${3:argument}):${4:void} 
 	{
-		${5:// body..}
+		${5}
 	}
 snippet fun
 	${1:public} function ${2:functionName}(${3:argument}):${4:void} 
 	{
-		${5:// body..}
+		${5}
 	}
 # Anonymous Function
 snippet f
@@ -40,6 +44,12 @@ snippet f
 # if
 snippet if
 	if (${1:true})
+	{
+		${2}
+	}
+# elif
+snippet elif
+	else if (${1:true})
 	{
 		${2}
 	}
@@ -62,19 +72,19 @@ snippet switch
 	{
 		case ${3:case}:
 		{
-			${4:// code}
+			${4}
 			break;
 		}
 		default:
 		{
-			${2:// code}
+			${2}
 		}
 	}
 # case
 snippet case
 	case ${1:case}:
 	{
-		${2:// code}
+		${2}
 		break;
 	}
 # for (...) {...}
