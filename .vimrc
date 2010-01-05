@@ -15,9 +15,9 @@ se statusline=\(%n\)%<%f\ %h%m%r%=0x%B\ \ \ \ %-14.(%l,%c%V%)\ %P
 se nowrap
 se nu
 se cursorline
-se cursorcolumn
 if has("gui_running")
   se paste      "This option have side effect for fuf plugin in terminal
+  se cursorcolumn
 endif
 
 
@@ -48,7 +48,6 @@ match OverLength /\%81v.*/
 
 "search
 se hls ic
-
 
 "auto chdir dir
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
