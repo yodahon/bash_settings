@@ -48,6 +48,7 @@ match OverLength /\%81v.*/
 
 "search
 se hls ic
+se nowrapscan
 
 "auto chdir dir
 autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
