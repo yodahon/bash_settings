@@ -81,7 +81,12 @@ nnoremap <silent> <F6> <ESC>:w<CR>:!cd /Users/neocoin/works/workspace/Onioning/t
 nnoremap <silent> <F2> :YRShow<CR>    
                                            "for taglist plugin
 nnoremap <silent> <F8> :TlistToggle<CR> 
+
+if has("win32") || has("win64")
 nnoremap <silent> <F9> :OpenTerminal<CR>
+else
+nnoremap <silent> <F9> :ConqueTerm bash<CR>
+endif
 nnoremap <silent> <F10> :OpenFilemanager<CR><CR>
 let g:CS_key = 1
 if has("gui_running")
