@@ -74,6 +74,9 @@ set ts=4 sts=4 sw=4 et ai bs=2
 nnoremap <silent> - <ESC>:OpenDirFilePos<CR>
 nnoremap <silent> <F3> <ESC>:hide<CR>
 nnoremap <silent> <F4> <ESC>:close<CR>
+nnoremap <silent> <F5> <ESC>:w<CR>:!ruby %<CR>
+nnoremap <silent> <F6> <ESC>:w<CR>:!cd /Users/neocoin/works/workspace/Onioning/test/ && ruby unit/tumblr_publisher_test.rb<CR> 
+
                                            "for YankRing plugin
 nnoremap <silent> <F2> :YRShow<CR>    
                                            "for taglist plugin

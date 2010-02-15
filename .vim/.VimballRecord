@@ -2,3 +2,4 @@ sherlock.vba: call delete('/Users/neocoin/.vim/autoload/sherlock.vim')|call dele
 open_terminal.vba: call delete('/Users/neocoin/.vim/plugin/open_terminal.vim')|call delete('/Users/neocoin/.vim/doc/open_terminal.txt')
 delimitMate.vba: call delete('/Users/neocoin/.vim/doc/delimitMate.txt')|call delete('/Users/neocoin/.vim/plugin/delimitMate.vim')
 Align.vba: call delete('/Users/neocoin/.vim/plugin/AlignPlugin.vim')|call delete('/Users/neocoin/.vim/plugin/AlignMapsPlugin.vim')|call delete('/Users/neocoin/.vim/plugin/cecutil.vim')|call delete('/Users/neocoin/.vim/doc/Align.txt')|call delete('/Users/neocoin/.vim/autoload/Align.vim')|call delete('/Users/neocoin/.vim/autoload/AlignMaps.vim')
+conque_term_1.0.vba: call delete('/Users/neocoin/.vim/autoload/conque_term.vim')|call delete('/Users/neocoin/.vim/doc/conque_term.txt')|call delete('/Users/neocoin/.vim/plugin/conque_term.vim')|call delete('/Users/neocoin/.vim/syntax/conque_term.vim')
