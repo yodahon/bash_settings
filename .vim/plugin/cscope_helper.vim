@@ -73,7 +73,7 @@ endfunction
 
 function! s:add_cscope_out()
     cs kill 0
-    execute("cs add " . s:csout_path() )
+    execute("cs add " . s:csout_path() . " -C " )
     set cspc=3
 endfunction
 
